@@ -26,7 +26,15 @@ const avgEmoc = [
     { emotion: 69 },
     { emotion: 88 },
     { emotion: 94 },
-]
+];
+
+const timeCC = [
+    { time: 6 },
+    { time: 9 },
+    { time: 16 },
+    { time: 18 },
+    { time: 25 },
+];
 
     return (
         <div className='stats'>
@@ -44,12 +52,12 @@ const avgEmoc = [
             <div className='button-row'>
                 <button className='kpi-button' variant="contained" color="primary">
                     Tiempo productivo del Call Center:
-                    <TimeCC />
+                    <TimeCC timeCallCenter={timeCC}/>
                 </button>
 
                 <button className='kpi-button' variant="contained" color="primary">
-                    Porcentaje de llamadas en tiempo ideal:
-                    <IdealCalls />
+                    % de llamadas en tiempo ideal (1 min):
+                    <IdealCalls calls = {fakeCalls}/>
                 </button>
             </div>
         </div>
