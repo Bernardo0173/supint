@@ -1,12 +1,12 @@
 //Genera un componente que muestra el tiempo promedio de cada llamada
 //Autor: Benjamín Alejandro Cruz Cervantes
 
-const PromLlamada = () => {
-    // Aquí va tu código
-
+const PromLlamada = ({calls}) => {
+    const avgDuration = calls.reduce((total, call) => total + call.duration,0)/calls.length;
+    
     return (
         <div>
-            {/* Aquí va el contenido del componente */}
+            <p>{avgDuration} minutos</p>
         </div>
     );
 };
