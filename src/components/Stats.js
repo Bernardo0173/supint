@@ -17,10 +17,10 @@ const Stats = () => {
 
 const fakeCalls = [
     {duration: 1},
-    {duration: 2},
     {duration: 3},
-    {duration: 4},
-    {duration: 50},
+    {duration: 2},
+    {duration: 5},
+    {duration: 1},
 ];
 
     return (
