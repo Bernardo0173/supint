@@ -4,7 +4,16 @@
     position: relative; /* Esto permite posicionar el botón y la ventana de notificaciones de forma absoluta dentro del contenedor */
   }
   
-  .left-panel, .right-panel {
+
+  .left-panel{
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas con ancho igual */
+    grid-gap: 10px; /* Espacio entre las tarjetas */
+  }
+  
+  .right-panel {
     flex: 1;
     padding: 20px;
   }
