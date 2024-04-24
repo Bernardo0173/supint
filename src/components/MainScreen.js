@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import '../styles/mainScreen.css'; // Asegúrate de tener este archivo CSS en la misma carpeta
+import NotificationsOffCanvas from './NotificationsOffCanvas';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MainScreen = () => {
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-
-  const toggleNotifications = () => {
-    setIsNotificationsOpen(!isNotificationsOpen);
-  };
-
   return (
     <div className="main-container">
       <div className="left-panel">
@@ -21,14 +19,7 @@ const MainScreen = () => {
           Sección Inferior
         </div>
       </div>
-      <button className="notifications-button" onClick={toggleNotifications}>
-        {!isNotificationsOpen ? 'Mostrar Notificaciones' : 'Ocultar Notificaciones'}
-      </button>
-      {isNotificationsOpen && (
-        <div className="notifications-panel">
-          Aquí van las notificaciones
-        </div>
-      )}
+      <NotificationsOffCanvas/>
     </div>
   );
 }
