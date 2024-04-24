@@ -12,29 +12,29 @@ import '../styles/stats.css';
 
 const Stats = () => {
 
-const fakeCalls = [
-    {duration: 1},
-    {duration: 3},
-    {duration: 2},
-    {duration: 5},
-    {duration: 1},
-];
+    const fakeCalls = [
+        { duration: 1 },
+        { duration: 3 },
+        { duration: 2 },
+        { duration: 5 },
+        { duration: 1 },
+    ];
 
-const avgEmoc = [
-    { emotion: 55 },
-    { emotion: 63 },
-    { emotion: 69 },
-    { emotion: 88 },
-    { emotion: 94 },
-];
+    const avgEmoc = [
+        { emotion: 55 },
+        { emotion: 63 },
+        { emotion: 69 },
+        { emotion: 88 },
+        { emotion: 94 },
+    ];
 
-const timeCC = [
-    { time: 6 },
-    { time: 9 },
-    { time: 16 },
-    { time: 18 },
-    { time: 25 },
-];
+    const timeCC = [
+        { time: 6 },
+        { time: 9 },
+        { time: 16 },
+        { time: 18 },
+        { time: 25 },
+    ];
 
     return (
         <div className='stats'>
@@ -46,18 +46,18 @@ const timeCC = [
 
                 <button className='kpi-button' variant="contained" color="primary">
                     Promedio de emociones por llamada:
-                    <PromEmoc emoc = {avgEmoc}/>
+                    <PromEmoc emoc={avgEmoc} />
                 </button>
             </div>
             <div className='button-row'>
                 <button className='kpi-button' variant="contained" color="primary">
                     Tiempo productivo del Call Center:
-                    <TimeCC timeCallCenter={timeCC}/>
+                    <TimeCC timeCallCenter={timeCC} />
                 </button>
 
                 <button className='kpi-button' variant="contained" color="primary">
                     % de llamadas en tiempo ideal (1 min):
-                    <IdealCalls calls = {fakeCalls}/>
+                    <IdealCalls calls={fakeCalls} />
                 </button>
             </div>
         </div>
