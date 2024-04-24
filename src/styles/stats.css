@@ -25,6 +25,7 @@
     width: auto; /* Ancho del botón */
     height: 20vh; /* Altura responsiva */
     flex: 2;
+    border-radius: 20px; /* Bordes redondeados */
 }
 
 .kpi-button:hover {
