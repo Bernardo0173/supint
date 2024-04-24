@@ -17,14 +17,14 @@
 .kpi-button {
     background-color: #d47100; /* Color de fondo */
     color: white; /* Color de texto */
-    padding: 15px 32px; /* Espaciado */
-    margin: 10px 10px; /* Margen */
+    padding: 20px 32px; /* Espaciado */
+    margin: 15px 15px; /* Margen */
     text-align: center; /* Alineación de texto */
     cursor: pointer; /* Cambiar el cursor al pasar el mouse */
-    transition-duration: 0.4s; /* Duración de la transición */
+    transition-duration: 0.3s; /* Duración de la transición */
     width: auto; /* Ancho del botón */
-    height: 15vh; /* Altura responsiva */
-    flex: 1;
+    height: 20vh; /* Altura responsiva */
+    flex: 2;
 }
 
 .kpi-button:hover {

@@ -1,7 +1,7 @@
 //Genera un componente que muestra las estadísticas del Call Center
 //Autor: Benjamín Alejandro Cruz Cervantes
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import PromLlamada from './PromLlamada';
 import PromEmoc from './PromEmoc';
@@ -11,42 +11,41 @@ import IdealCalls from './IdealCalls';
 import '../styles/stats.css';
 
 const Stats = () => {
-    const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [open4, setOpen4] = useState(false);
 
+const fakeCalls = [
+    {duration: 1},
+    {duration: 2},
+    {duration: 3},
+    {duration: 4},
+    {duration: 50},
+];
+
     return (
         <div className='stats'>
             <div className='button-row'>
-                <button className='kpi-button' variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                    Tiempo promedio de cada llamada
+                <button className='kpi-button' variant="contained" color="primary">
+                    Tiempo promedio de cada llamada:
+                    <PromLlamada calls={fakeCalls} />
                 </button>
-                <dialog open={open1} onClose={() => setOpen1(false)}>
-                    <PromLlamada />
-                </dialog>
 
-                <button className='kpi-button' variant="contained" color="primary" onClick={() => setOpen2(true)}>
-                    Promedio de las emociones de cada llamada
-                </button>
-                <dialog open={open2} onClose={() => setOpen2(false)}>
+                <button className='kpi-button' variant="contained" color="primary">
+                    Promedio de las emociones de cada llamada:
                     <PromEmoc />
-                </dialog>
+                </button>
             </div>
             <div className='button-row'>
-                <button className='kpi-button' variant="contained" color="primary" onClick={() => setOpen3(true)}>
-                    Tiempo productivo del Call Center
-                </button>
-                <dialog open={open3} onClose={() => setOpen3(false)}>
+                <button className='kpi-button' variant="contained" color="primary">
+                    Tiempo productivo del Call Center:
                     <TimeCC />
-                </dialog>
-
-                <button className='kpi-button' variant="contained" color="primary" onClick={() => setOpen4(true)}>
-                    Porcentaje de llamadas en tiempo ideal
                 </button>
-                <dialog open={open4} onClose={() => setOpen4(false)}>
+
+                <button className='kpi-button' variant="contained" color="primary">
+                    Porcentaje de llamadas en tiempo ideal:
                     <IdealCalls />
-                </dialog>
+                </button>
             </div>
         </div>
     );
