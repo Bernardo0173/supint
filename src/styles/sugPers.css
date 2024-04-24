@@ -1,0 +1,28 @@
+/* sugPers.css */
+.sugPers-container {
+    margin: 0; /* Ajustado para Offcanvas */
+    width: 100%; /* Ajustado para llenar el Offcanvas */
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 5px;
+}
+  
+.sugPers-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+  
+.sugPers-content {
+    margin-bottom: 20px;
+}
+  
+.sugPers-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    display: block; /* Opcional: para hacer que el botón ocupe el ancho completo */
+    width: 100%; /* Opcional: para hacer que el botón ocupe el ancho completo */
+}
