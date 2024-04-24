@@ -1,0 +1,61 @@
+.stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    height: 100%;
+    font-size: 1.5vw;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+}
+
+.kpi-button {
+    background-color: #d47100; /* Color de fondo */
+    color: white; /* Color de texto */
+    padding: 20px 32px; /* Espaciado */
+    margin: 15px 15px; /* Margen */
+    text-align: center; /* Alineación de texto */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    transition-duration: 0.3s; /* Duración de la transición */
+    width: auto; /* Ancho del botón */
+    height: 20vh; /* Altura responsiva */
+    flex: 2;
+    border-radius: 20px; /* Bordes redondeados */
+}
+
+.kpi-button:hover {
+    background-color: #a06000; /* Cambiar el color de fondo al pasar el mouse */
+}
+
+/* Tamaño de fuente mínimo de 16px */
+@media screen and (max-width: 600px) {
+    .kpi-button {
+        font-size: 16px;
+    }
+}
+
+/* Tamaño de fuente máximo de 32px */
+@media screen and (min-width: 1200px) {
+    .kpi-button {
+        font-size: 32px;
+    }
+}
+
+/* Altura mínima de 50px */
+@media screen and (max-height: 500px) {
+    .kpi-button {
+        height: 50px;
+    }
+}
+
+/* Altura máxima de 100px */
+@media screen and (min-height: 1000px) {
+    .kpi-button {
+        height: 100px;
+    }
+}
