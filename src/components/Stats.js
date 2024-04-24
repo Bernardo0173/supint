@@ -11,9 +11,6 @@ import IdealCalls from './IdealCalls';
 import '../styles/stats.css';
 
 const Stats = () => {
-    const [open2, setOpen2] = useState(false);
-    const [open3, setOpen3] = useState(false);
-    const [open4, setOpen4] = useState(false);
 
 const fakeCalls = [
     {duration: 1},
@@ -22,6 +19,14 @@ const fakeCalls = [
     {duration: 5},
     {duration: 1},
 ];
+
+const avgEmoc = [
+    { emotion: 55 },
+    { emotion: 63 },
+    { emotion: 69 },
+    { emotion: 88 },
+    { emotion: 94 },
+]
 
     return (
         <div className='stats'>
@@ -32,8 +37,8 @@ const fakeCalls = [
                 </button>
 
                 <button className='kpi-button' variant="contained" color="primary">
-                    Promedio de las emociones de cada llamada:
-                    <PromEmoc />
+                    Promedio de emociones por llamada:
+                    <PromEmoc emoc = {avgEmoc}/>
                 </button>
             </div>
             <div className='button-row'>
