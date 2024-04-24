@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import Card from "./AgentCard";
 import PopUp from "./PopUp";
-import React, {useState} from 'react';
-import '../styles/mainScreen.css'; // Asegúrate de tener este archivo CSS en la misma carpeta
 import Stats from './Stats';
 import NotificationsOffCanvas from './NotificationsOffCanvas';
 import Button from 'react-bootstrap/Button';
@@ -90,7 +88,6 @@ const MainScreen = () => {
         </div>
         <div className="bottom-section">
           Sección Inferior
-          <div>WAKALA</div>
         </div>
       </div>
       <NotificationsOffCanvas/>
