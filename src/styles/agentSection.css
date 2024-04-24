@@ -1,0 +1,10 @@
+.AgentSection {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: 10%; 
+}
+  .AgentSection h1 {
+    margin: 0;
+  
+}
