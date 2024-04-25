@@ -5,6 +5,7 @@ import '../styles/mainScreen.css'; // Asegúrate de tener este archivo CSS en la
 import Stats from './Stats';
 import NotificationsOffCanvas from './NotificationsOffCanvas';
 import ValInc from './ValInc';
+import ButPopMens from './ButPopMens';
 
 const MainScreen = () => {
   return (
@@ -18,6 +19,7 @@ const MainScreen = () => {
         </div>
         <div className="bottom-section">
           <ValInc /> {/* Aquí se renderiza el componente Reporte */}
+          <ButPopMens/>
         </div>
       </div>
       <NotificationsOffCanvas/>

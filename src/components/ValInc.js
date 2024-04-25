@@ -19,37 +19,6 @@ function ValInc() {
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
-
-        const [showPopup, setShowPopup] = React.useState(false);
-
-        const handleClose = () => setShowPopup(false);
-        const handleShow = () => setShowPopup(true);
-
-        return (
-            <div>
-                <button className="btn btn-primary" onClick={handleShow}>Abrir popup</button>
-
-                {showPopup && (
-                    <div className="modal" show={showPopup} onHide={handleClose}>
-                        <div className="modal-header">
-                            <h5 className="modal-title">Popup</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <p>Contenido del popup</p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>
-                                Cerrar
-                            </button>
-                            <button type="button" className="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
-    };
+)};
 
 export default ValInc;
