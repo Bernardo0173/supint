@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState} from 'react';
+import '../styles/mainScreen.css'; // Asegúrate de tener este archivo CSS en la misma carpeta
 import Card from "./AgentCard";
 import PopUp from "./PopUp";
 import Stats from './Stats';
 import NotificationsOffCanvas from './NotificationsOffCanvas';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import ValInc from './ValInc';
+import ButPopMens from './ButPopMens';
 
 
 const MainScreen = () => {
@@ -86,7 +85,8 @@ const MainScreen = () => {
           <Stats /> {/* Aquí se renderiza el componente Stats */}
         </div>
         <div className="bottom-section">
-          Sección Inferior
+          <ValInc /> {/* Aquí se renderiza el componente Reporte */}
+          <ButPopMens/>
         </div>
       </div>
       <NotificationsOffCanvas/>
