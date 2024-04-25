@@ -83,7 +83,6 @@ const MainScreen = () => {
 
       <div className="right-panel">
         <div className="top-section">
-          KPI's
           <Stats /> {/* Aquí se renderiza el componente Stats */}
         </div>
         <div className="bottom-section">
