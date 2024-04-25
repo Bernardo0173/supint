@@ -4,14 +4,17 @@ import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la
 //import PopUp from "./PopUp";
 //import CardComponent from "./BootstapCard";
 import BootstrapCard from "./BootstapCard";
+import Card from "./AgentCard";
+import PopUp from "./PopUp";
+import React, {useState} from 'react';
+import '../styles/mainScreen.css'; // Asegúrate de tener este archivo CSS en la misma carpeta
+import Stats from './Stats';
+import NotificationsOffCanvas from './NotificationsOffCanvas';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MainScreen = () => {
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-
-  const toggleNotifications = () => {
-    setIsNotificationsOpen(!isNotificationsOpen);
-  };
-
   return (
     <div className="main-container">
       <div className="left-panel">
@@ -24,22 +27,15 @@ const MainScreen = () => {
       </div>
       <div className="right-panel">
         <div className="top-section">
-          Sección Superior
-          <div>WAKALA</div>
+          KPI's
+          <Stats /> {/* Aquí se renderiza el componente Stats */}
         </div>
         <div className="bottom-section">
           Sección Inferior
           <div>WAKALA</div>
         </div>
       </div>
-      <button className="notifications-button" onClick={toggleNotifications}>
-        {!isNotificationsOpen
-          ? "Mostrar Notificaciones"
-          : "Ocultar Notificaciones"}
-      </button>
-      {isNotificationsOpen && (
-        <div className="notifications-panel">Aquí van las notificaciones</div>
-      )}
+      <NotificationsOffCanvas/>
     </div>
   );
 };
