@@ -1,0 +1,13 @@
+.message-button {
+  width: 200px; 
+  height: 70px; 
+  border: rgb(90, 36, 2);
+  border-radius: 20px;
+  margin-top: 15px;
+  background-color: #167e9d; 
+  color: rgb(246, 235, 235); 
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer; 
+  margin-left: 10px;
+}
