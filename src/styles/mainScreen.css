@@ -7,25 +7,13 @@
 
   .left-panel{
     flex: 1;
-    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas con ancho igual */
     grid-gap: 10px; /* Espacio entre las tarjetas */
   }
   
   .right-panel {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .notifications-button {
-    position: fixed; /* Fija el botón en la pantalla */
-    right: 10px; /* Espaciado del borde derecho */
-    top: 50%; /* Centra el botón verticalmente */
-    transform: translateY(-50%); /* Ajuste fino para centrar exactamente */
-    padding: 10px 20px;
-    cursor: pointer;
-    z-index: 100; /* Asegura que el botón esté sobre otros elementos */
+    width: 30%;
   }
   
   .notifications-panel {
@@ -42,11 +30,6 @@
     overflow-y: auto; /* Permite desplazarse si el contenido es muy largo */
   }
   
-  /* Estilos adicionales */
-  .left-panel {
-    background-color: #f0f0f0;
-  }
-  
   .right-panel {
     display: flex;
     flex-direction: column;
@@ -56,10 +39,6 @@
     flex: 1;
     margin: 10px;
     padding: 10px;
-  }
-  
-  .top-section {
-    background-color: #fff;
   }
   
   .bottom-section {

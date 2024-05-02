@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 function BootstapCard(props) {
   return (
-    <Card style={{ width: '18rem' }} className={props.style}>
+    <Card style={{ width: '15rem' }} className={props.style}>
       <Card.Body>
         <Card.Title>{props.Title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{props.Subtitle1}</Card.Subtitle>
