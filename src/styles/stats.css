@@ -1,28 +1,25 @@
 .stats {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .button-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .kpi-button {
     background-color: #EC6907; /* Color de fondo */
     color: white; /* Color de texto */
-    padding: 5px 5px; /* Espaciado */
-    margin: 10px 10px; /* Margen */
+    margin: 10px ; /* Margen entre cada botón */
     text-align: center; /* Alineación de texto */
     cursor: pointer; /* Cambiar el cursor al pasar el mouse */
     transition-duration: 0.3s; /* Duración de la transición */
-    width: auto; /* Ancho del botón */
-    height: 18rem; /* Altura responsiva */
-    flex:content;
+    width: 12rem; /* Ancho del botón */
+    height: 6rem; /* Altura responsiva */
     border-radius: 20px; /* Bordes redondeados */
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .kpi-button:hover {
