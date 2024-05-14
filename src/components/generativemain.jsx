@@ -12,6 +12,7 @@ const generativemain = () => {
   const [agentUrl, setAgentUrl] = useState(
     "http://127.0.0.1:8080/llamada/llamadasAgentes"
   );
+  
   const agentColor = (state) => {
     switch (state) {
       case "Positivo":
