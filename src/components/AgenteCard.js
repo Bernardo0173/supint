@@ -4,10 +4,10 @@ function AgenteCard(props) {
     const {
       agentName, 
       clientName, 
-      callTime = "0.53", 
-      solvedProblems = 5, 
-      description = "The client description problem. This text comes from the IVR.", 
-      style = "bg-success text-white",
+      callTime, 
+      solvedProblems, 
+      description, 
+      style,
     } = props;
   
     // Spread operator for concise prop passing to BootstrapCard
@@ -19,7 +19,7 @@ function AgenteCard(props) {
           Subtitle2: `Call time: ${callTime}`,
           Subtitle3: `Solved problems: ${solvedProblems}`,
           Text1: `Description: ${description}`,
-          style,
+          style: `${style}`,
         }}
       />
     );

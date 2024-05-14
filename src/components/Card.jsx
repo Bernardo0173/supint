@@ -1,7 +1,6 @@
 import '../styles/agentCard.css';
 import SOS from './HelpButton';
 
-
 const Card = (props) => {
     return (
         <div className="card">

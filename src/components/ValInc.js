@@ -2,7 +2,7 @@
 //Autor: Benjamín Alejandro Cruz Cervantes
 
 import Accordion from 'react-bootstrap/Accordion';
-import { useState, useCallback } from 'react';
+//import { useState, useCallback } from 'react';
 //Genera un componente que muestra los reportes de incidencias usando la base de datos
 //Autor: Eric Manuel Navarro Martínez
 

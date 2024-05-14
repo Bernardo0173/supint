@@ -1,48 +1,82 @@
 .main-container {
-    display: flex;
-    height: 100vh;
-    position: relative; /* Esto permite posicionar el botón y la ventana de notificaciones de forma absoluta dentro del contenedor */
-  }
-  
+  display: flex;
+  height: 100vh;
+  position: relative; /* Esto permite posicionar el botón y la ventana de notificaciones de forma absoluta dentro del contenedor */
+}
 
-  .left-panel{
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas con ancho igual */
-    grid-gap: 10px; /* Espacio entre las tarjetas */
-  }
-  
-  .right-panel {
-    width: 30%;
-  }
-  
-  .notifications-panel {
-    position: fixed;
-    right: 50px; /* Más hacia el centro desde el borde derecho */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 200px; /* Ancho de la ventana de notificaciones */
-    height: 300px; /* Altura de la ventana de notificaciones */
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    z-index: 90; /* Menor que el botón para que no sobreponga */
-    padding: 20px;
-    overflow-y: auto; /* Permite desplazarse si el contenido es muy largo */
-  }
-  
-  .right-panel {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .top-section, .bottom-section {
-    flex: 1;
-    margin: 10px;
-    padding: 10px;
-  }
-  
-  .bottom-section {
-    background-color: #eee;
-  }
+.left-panel {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas con ancho igual */
+  grid-gap: 10px; /* Espacio entre las tarjetas */
+}
 
-  
+.right-panel {
+  width: 30%;
+}
+
+.notifications-panel {
+  position: fixed;
+  right: 50px; /* Más hacia el centro desde el borde derecho */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px; /* Ancho de la ventana de notificaciones */
+  height: 300px; /* Altura de la ventana de notificaciones */
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 90; /* Menor que el botón para que no sobreponga */
+  padding: 20px;
+  overflow-y: auto; /* Permite desplazarse si el contenido es muy largo */
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section,
+.bottom-section {
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
+}
+
+.bottom-section {
+  background-color: #eee;
+}
+
+.warning {
+  background-color: #ffce54;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.warning:hover {
+  background-color: #fcbb42;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.danger {
+  background-color: #ed5565;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.danger:hover {
+  background-color: #da4453;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.fine {
+  background-color: #a0d468;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fine:hover {
+  background-color: #8cc152;
+  cursor: pointer;
+}
