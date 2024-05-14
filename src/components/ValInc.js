@@ -10,7 +10,6 @@ import { useState, useCallback } from 'react';
 AGREGAR ALGO PARA QUE JALE LAS CONDICIONEES DE LA BASE DE DATOS
 */
 
-
 function ValInc() {
     return (
         <Accordion>
