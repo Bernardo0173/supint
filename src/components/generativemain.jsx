@@ -5,23 +5,24 @@ import Stats from "./Stats";
 import NotificationsOffCanvas from "./NotificationsOffCanvas";
 import ValInc from "./ValInc";
 import ButPopMens from "./ButPopMens";
-import AgenteCard from "./AgenteCard";
+import AgenteCard from "./Card";
 
 const generativemain = () => {
   const [agenteNuevo, setAgenteNuevo] = useState([]);
   const [agentUrl, setAgentUrl] = useState(
     "http://127.0.0.1:8080/llamada/llamadasAgentes"
   );
+  
   const agentColor = (state) => {
     switch (state) {
       case "Positivo":
-        return "bg-success text-white";
+        return "fine";
       case "Preventivo":
-        return "bg-warning text-white";
+        return "warning";
       case "Crítico":
-        return "bg-danger text-white";
+        return "danger";
       default:
-        return "bg-secondary text-white";
+        return "resting";
     }
   };
 

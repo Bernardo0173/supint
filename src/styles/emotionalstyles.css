@@ -1,0 +1,52 @@
+.danger,
+.fine,
+.warning,
+.resting {
+  border: 8px solid black;
+  border-radius: 20px;
+  margin: 20px;
+  width: auto; /* Aumentamos el ancho para permitir más espacio */
+  height: 250px; /* Cambiamos a auto para que se ajuste según el contenido */
+  padding: 20px; /* Añadimos un poco de espacio interno */
+  display: flex; /* Ajustamos a flex para que los elementos internos se distribuyan correctamente */
+  flex-direction: column; /* Cambiamos a columna para que el contenido se alinee verticalmente */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.warning {
+  background-color: #ffce54;
+  transition:background-color 0.3s;
+}
+.warning:hover {
+  background-color: #fcbb42;
+}
+.fine {
+  background-color: #48cfad;
+  transition:background-color 0.3s;
+}
+.fine:hover {
+  background-color: #37bc9b;
+}
+
+.danger {
+  background-color: #da4453;
+  transition:background-color 0.3s;
+}
+
+.danger:hover {
+  background-color: #ed9090;
+}
+
+.resting {
+  background-color: #f5f7fa;
+  transition:background-color 0.3s;
+}
+
+.resting:hover {
+  background-color: #e6e9ed;
+}
+.intervene{
+    background-color: #850ebd;
+    color : white;
+}
