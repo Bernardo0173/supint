@@ -6,6 +6,7 @@ import NotificationsOffCanvas from "./NotificationsOffCanvas";
 import ValInc from "./ValInc";
 import ButPopMens from "./ButPopMens";
 import AgenteCard from "./Card";
+import MoreInfo from "./MoreInfo";
 
 const generativemain = () => {
   const [agenteNuevo, setAgenteNuevo] = useState([]);
@@ -63,14 +64,16 @@ const generativemain = () => {
     <div className="main-container">
       <div className="left-panel">
         {agenteNuevo.map((agent) => (
-          <AgenteCard
-            key={agent.name}
-            agentName={agent.name}
-            clientName={agent.client}
-            callTime={agent.callTime}
-            solvedProblems={agent.problemsSolved}
-            description={agent.description}
-            style={agent.style}
+          <MoreInfo
+          key={agent.name}
+          Title={agent.name}
+          Subtitle1={agent.client}
+          Subtitle2={agent.callTime}
+          Subtitle3= {agent.problemsSolved}
+          Text1={agent.description}
+          Additional1={agent.additionalInfo}
+          style={agent.style}
+
           />
         ))}
       </div>
