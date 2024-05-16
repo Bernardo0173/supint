@@ -5,23 +5,24 @@ import Stats from "./Stats";
 import NotificationsOffCanvas from "./NotificationsOffCanvas";
 import ValInc from "./ValInc";
 import ButPopMens from "./ButPopMens";
-import AgenteCard from "./AgenteCard";
+import MoreInfo from "./MoreInfo";
 
-const generativemain = () => {
+const generativeMainScreen = () => {
   const [agenteNuevo, setAgenteNuevo] = useState([]);
   const [agentUrl, setAgentUrl] = useState(
     "http://127.0.0.1:8080/llamada/llamadasAgentes"
   );
+  
   const agentColor = (state) => {
     switch (state) {
       case "Positivo":
-        return "bg-success text-white";
+        return "fine";
       case "Preventivo":
-        return "bg-warning text-white";
+        return "warning";
       case "Crítico":
-        return "bg-danger text-white";
+        return "danger";
       default:
-        return "bg-secondary text-white";
+        return "resting";
     }
   };
 
@@ -62,14 +63,16 @@ const generativemain = () => {
     <div className="main-container">
       <div className="left-panel">
         {agenteNuevo.map((agent) => (
-          <AgenteCard
-            key={agent.name}
-            agentName={agent.name}
-            clientName={agent.client}
-            callTime={agent.callTime}
-            solvedProblems={agent.problemsSolved}
-            description={agent.description}
-            style={agent.style}
+          <MoreInfo
+          key={agent.name}
+          Title={agent.name}
+          Subtitle1={agent.client}
+          Subtitle2={agent.callTime}
+          Subtitle3= {agent.problemsSolved}
+          Text1={agent.description}
+          Additional1={agent.additionalInfo}
+          style={agent.style}
+
           />
         ))}
       </div>
@@ -87,4 +90,4 @@ const generativemain = () => {
   );
 };
 
-export default generativemain;
+export default generativeMainScreen;
