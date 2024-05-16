@@ -1,9 +1,9 @@
 //Autor: Eric Manuel Navarro Martínez
 //Componente que permite hacer click en las tarjetas de agente, haciendo que estas desplieguen más información sobre la llamada
 import { Modal, Button } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import	"../styles/emotionalStyles.css";
+import { IoIosPeople } from "react-icons/io";
 
 const MoreInfo = (props) => {
 
@@ -20,21 +20,20 @@ const MoreInfo = (props) => {
 
 
   return (
-    <div>
-      <Card className={props.cardStyle} onClick={getInfo}>
-        <Card.Body>
-          <Card.Title>{props.Title}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted"> {props.Subtitle1} </Card.Subtitle>
-          <Card.Subtitle className="mb-2 text-muted"> {props.Subtitle2} </Card.Subtitle>
-          <Card.Subtitle className="mb-2 text-muted"> {props.Subtitle3} </Card.Subtitle>
-          <Card.Text>{props.Text1}</Card.Text>
-        </Card.Body>
-      </Card>
-      <button className="intervene" onClick={intervene}>Intervene</button>
+    <div className="cardcontainer">
+      <div className={props.cardStyle} onClick={getInfo}>
+          <div className="agentName">{props.Title}</div>
+          <div className="clientName"> {props.Subtitle1} </div>
+          <div className="description"> {props.Subtitle2} </div>
+          <div className="description"> {props.Subtitle3} </div>
+          <div className="description">{props.Text1}</div>
+        
+      </div>
+      <IoIosPeople className="intervene" onClick={intervene} />
       <Modal show={showMore} onHide={() => (setshowMore (!showMore))} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
         
         <Modal.Header closeButton>
-          <Modal.Title>Indormación de la llamada</Modal.Title>
+          <Modal.Title>Información de la llamada</Modal.Title>
         </Modal.Header>
         
         <Modal.Body>

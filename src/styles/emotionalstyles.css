@@ -2,51 +2,85 @@
 .fine,
 .warning,
 .resting {
-  border: 2px solid black;
+  border: 2px solid rgb(92, 92, 92);
   border-radius: 20px;
-  margin: 20px;
-  width: auto; /* Aumentamos el ancho para permitir más espacio */
-  height: 250px; /* Cambiamos a auto para que se ajuste según el contenido */
-  padding: 20px; /* Añadimos un poco de espacio interno */
+  margin: 12px;
+  width: 310px; /* Aumentamos el ancho para permitir más espacio */
+  height: 200px; /* Cambiamos a auto para que se ajuste según el contenido */
+  padding: 5px; /* Añadimos un poco de espacio interno */
   display: flex; /* Ajustamos a flex para que los elementos internos se distribuyan correctamente */
   flex-direction: column; /* Cambiamos a columna para que el contenido se alinee verticalmente */
   overflow: hidden;
   cursor: pointer;
 }
 
+.agentName,.clientName,.description{
+  font-family: Helvetica;
+  font-size: 15px;
+  overflow: hidden;
+}
+.agentName{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.clientName{
+  font-weight: italic;
+  font-size: 20px;
+}
+
+.description{
+  font-size: 12px;
+}
+
 .warning {
-  background-color: #ffce54;
-  transition:background-color 0.3s;
+  background-color: #fcac51;
+  transition: background-color 0.3s;
 }
 .warning:hover {
-  background-color: #fcbb42;
+  background-color: #ff9e2e;
 }
 .fine {
-  background-color: #48cfad;
-  transition:background-color 0.3s;
+  background-color: #3dd271;
+  transition: background-color 0.3s;
 }
 .fine:hover {
-  background-color: #37bc9b;
+  background-color: #2dac59;
 }
 
 .danger {
-  background-color: #da4453;
-  transition:background-color 0.3s;
+  background-color: #da4a58;
+  transition: background-color 0.3s;
 }
 
 .danger:hover {
-  background-color: #ed9090;
+  background-color: #b93d49;
 }
 
 .resting {
-  background-color: #f5f7fa;
-  transition:background-color 0.3s;
+  background-color: #9dbded;
+  transition: background-color 0.3s;
 }
 
 .resting:hover {
-  background-color: #e6e9ed;
+  background-color: rgb(104, 142, 199);
 }
-.intervene{
-    background-color: #850ebd;
-    color : white;
+
+.cardcontainer {
+  position: relative;
 }
+
+.intervene {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  font-size: 50px;
+  color: #fff8dc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.intervene:hover {
+  color: #d5cfb8
+}
+
