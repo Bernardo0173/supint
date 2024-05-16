@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AgenteCard from "./AgenteCard";
 import Stats from './Stats';
 import NotificationsOffCanvas from './NotificationsOffCanvas';
 import ValInc from './ValInc';
+import Accordion from 'react-bootstrap/Accordion';
 import ButPopMens from './ButPopMens';
 
 const MainScreen = () => {
@@ -16,10 +17,21 @@ const MainScreen = () => {
     { name: "David Romero", client: "Cecilia Méndez", callTime: "3.01", problemsSolved: 2, description: "Questions about service renewal. Information from email correspondence.", style: "bg-danger text-white" },
     { name: "Pitufino Azamar", client: "Benny Gonzáles", callTime: "0.53", problemsSolved: 3, description: "The client description problem. This text come from de IVR", style: "bg-success text-white" },
     { name: "Carlos Mendoza", client: "Ana Ramirez", callTime: "1.22", problemsSolved: 2, description: "Issue with account billing. Information sourced from customer call.", style: "bg-success text-white" },
-    { name: "Carlos Mendoza", client: "Ana Ramirez", callTime: "1.22", problemsSolved: 2, description: "Issue with account billing. Information sourced from customer call.", style: "bg-success text-white" }, 
+    { name: "Carlos Mendoza", client: "Ana Ramirez", callTime: "1.22", problemsSolved: 2, description: "Issue with account billing. Information sourced from customer call.", style: "bg-success text-white" },
     { name: "Carlos Mendoza", client: "Ana Ramirez", callTime: "1.22", problemsSolved: 2, description: "Issue with account billing. Information sourced from customer call.", style: "bg-warning text-white" },
     { name: "Carlos Mendoza", client: "Ana Ramirez", callTime: "1.22", problemsSolved: 2, description: "Issue with account billing. Information sourced from customer call.", style: "bg-danger text-white" }
   ];
+
+  const initialInc = [
+    { id: 0, tipoIncidencia: "Robo de cable" },
+    { id: 1, tipoIncidencia: "Vandalismo" },
+  ];
+
+  const [inc, setInc] = useState(initialInc);
+
+  const handleDelete = (id) => {
+    setInc(inc.filter(incidencia => incidencia.id !== id));
+  };
 
   return (
     <div className="main-container">
@@ -41,8 +53,20 @@ const MainScreen = () => {
           <Stats /> {/* Aquí se renderiza el componente Stats */}
         </div>
         <div className="bottom-section">
-          <ValInc /> {/* Aquí se renderiza el componente Reporte */}
-          <ButPopMens />
+          {inc.length === 0 ? (
+            <p>No hay reportes de incidencias por el momento</p>
+          ) : (
+            <Accordion>
+              {inc.map((incidencia) => (
+                <ValInc
+                  key={incidencia.id}
+                  eventKey={incidencia.id.toString()}
+                  tipoIncidencia={incidencia.tipoIncidencia}
+                  onDelete={() => handleDelete(incidencia.id)}
+                />
+              ))}
+            </Accordion>
+          )}
         </div>
       </div>
       <NotificationsOffCanvas />
@@ -51,4 +75,3 @@ const MainScreen = () => {
 };
 
 export default MainScreen;
- 
