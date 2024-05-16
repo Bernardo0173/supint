@@ -35,7 +35,7 @@ const MainScreen = () => {
           Subtitle2={agent.callTime}
           Subtitle3= {agent.problemsSolved}
           Text1={agent.description}
-          Additional1={agent.additionalInfo}
+          Additional1={agent.description}
           />
         ))}
       </div>

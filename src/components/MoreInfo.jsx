@@ -35,11 +35,13 @@ const MoreInfo = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Información de la llamada</Modal.Title>
         </Modal.Header>
-        
         <Modal.Body>
-          {props.Additional1}
+          <p>{props.Additional1}</p>
+          <p>{props.Additional1}</p>
+          <p>{props.Additional1}</p>
+          <p>{props.Additional1}</p>
+          <p>{props.Additional1}</p>
         </Modal.Body>
-
         <Modal.Footer>
           <Button variant="secondary" onClick={() => (setshowMore (!showMore))}>
             Cerrar

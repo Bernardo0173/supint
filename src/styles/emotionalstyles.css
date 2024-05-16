@@ -78,9 +78,10 @@
   color: #fff8dc;
   cursor: pointer;
   transition: color 0.3s;
+  transition: color 0.3s ease, stroke 0.3s ease; /* Smooth transition for color and stroke */
 }
 
 .intervene:hover {
-  color: #d5cfb8
+  color: #d5cfb8; /* Change to your desired hover color */
+  stroke: black; /* Change to your desired stroke color */
 }
-
