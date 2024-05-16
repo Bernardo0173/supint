@@ -2,7 +2,7 @@
 .fine,
 .warning,
 .resting {
-  border: 8px solid black;
+  border: 2px solid black;
   border-radius: 20px;
   margin: 20px;
   width: auto; /* Aumentamos el ancho para permitir más espacio */

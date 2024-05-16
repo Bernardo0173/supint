@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/emotionalstyles.css";
+import "../styles/emotionalStyles.css";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import Stats from './Stats';
 import NotificationsOffCanvas from './NotificationsOffCanvas';
@@ -13,6 +13,8 @@ const MainScreen = () => {
     { name: "Lucia Peralta", client: "Mario Juárez", callTime: "0.45", problemsSolved: 5, description: "Difficulty logging into the platform. Details from user feedback.", style: "resting" },
     { name: "Jorge Sánchez", client: "Lorena Castillo", callTime: "2.15", problemsSolved: 1, description: "Inquiry about product features. Data extracted from support chat.", style: "warning" },
     { name: "Sofía Cruz", client: "Fernando Limón", callTime: "1.58", problemsSolved: 4, description: "Problems with software installation. Info from technical support call.", style: "danger" },
+    { name: "Sofía Cruz", client: "Fernando Limón", callTime: "1.58", problemsSolved: 4, description: "Problems with software installation. Info from technical support call.", style: "danger" },
+    { name: "Sofía Cruz", client: "Fernando Limón", callTime: "1.58", problemsSolved: 4, description: "Problems with software installation. Info from technical support call.", style: "danger" }
     ];
 
   return (
@@ -27,7 +29,7 @@ const MainScreen = () => {
           Subtitle3= {agent.problemsSolved}
           Text1={agent.description}
           Additional1={agent.additionalInfo}
-          style={agent.style}
+          cardStyle={agent.style}
           />
         ))}
       </div>

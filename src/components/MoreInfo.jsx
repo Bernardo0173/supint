@@ -21,7 +21,7 @@ const MoreInfo = (props) => {
 
   return (
     <div>
-      <Card style={{ width: "15rem" }} className={props.cardStyle} onClick={getInfo}>
+      <Card className={props.cardStyle} onClick={getInfo}>
         <Card.Body>
           <Card.Title>{props.Title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted"> {props.Subtitle1} </Card.Subtitle>

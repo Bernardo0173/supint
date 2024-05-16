@@ -5,10 +5,9 @@ import Stats from "./Stats";
 import NotificationsOffCanvas from "./NotificationsOffCanvas";
 import ValInc from "./ValInc";
 import ButPopMens from "./ButPopMens";
-import AgenteCard from "./Card";
 import MoreInfo from "./MoreInfo";
 
-const generativemain = () => {
+const generativeMainScreen = () => {
   const [agenteNuevo, setAgenteNuevo] = useState([]);
   const [agentUrl, setAgentUrl] = useState(
     "http://127.0.0.1:8080/llamada/llamadasAgentes"
@@ -91,4 +90,4 @@ const generativemain = () => {
   );
 };
 
-export default generativemain;
+export default generativeMainScreen;
