@@ -1,0 +1,25 @@
+.more-info-container {
+  position: relative;
+}
+
+.intervene {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color:rgb(17, 91, 96)
+}
+
+
+.agent-card {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.agent-card:hover {
+  transform: scale(1.05);
+}

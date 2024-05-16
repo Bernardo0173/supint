@@ -45,7 +45,7 @@ const generativeMainScreen = () => {
           " " +
           agentes.Cliente.ApellidoM,
         callTime: agentes.Llamada.FechaHora,
-        problemsSolved: 3,
+        problemsSolved: agentes.queryapiyupi,
         description: agentes.Notas,
         style: agentColor(agente.Llamada.Estado),
       };
@@ -72,7 +72,6 @@ const generativeMainScreen = () => {
           Text1={agent.description}
           Additional1={agent.additionalInfo}
           style={agent.style}
-
           />
         ))}
       </div>
