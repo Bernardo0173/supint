@@ -10,7 +10,6 @@
   padding: 5px; /* Añadimos un poco de espacio interno */
   display: flex; /* Ajustamos a flex para que los elementos internos se distribuyan correctamente */
   flex-direction: column; /* Cambiamos a columna para que el contenido se alinee verticalmente */
-  overflow: hidden;
   cursor: pointer;
 }
 
@@ -34,14 +33,14 @@
 }
 
 .warning {
-  background-color: #fcac51;
+  background-color: #ffed47;
   transition: background-color 0.3s;
 }
 .warning:hover {
   background-color: #ff9e2e;
 }
 .fine {
-  background-color: #3dd271;
+  background-color: #28e247;
   transition: background-color 0.3s;
 }
 .fine:hover {
@@ -49,7 +48,7 @@
 }
 
 .danger {
-  background-color: #da4a58;
+  background-color: #ff3c38;
   transition: background-color 0.3s;
 }
 
@@ -58,7 +57,7 @@
 }
 
 .resting {
-  background-color: #9dbded;
+  background-color: #85add6;
   transition: background-color 0.3s;
 }
 
@@ -75,7 +74,7 @@
   top: 50px;
   left: 20px;
   font-size: 50px;
-  color: #fff8dc;
+  color: #d5cfb8;
   cursor: pointer;
   transition: color 0.3s;
   transition: color 0.3s ease, stroke 0.3s ease; /* Smooth transition for color and stroke */
