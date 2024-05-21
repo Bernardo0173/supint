@@ -2,7 +2,7 @@
 //Componente que permite hacer click en las tarjetas de agente, haciendo que estas desplieguen más información sobre la llamada
 import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
-import	"../styles/emotionalStyles.css";
+import	"../styles/emotionalstyles.css";
 import { IoIosPeople } from "react-icons/io";
 
 const MoreInfo = (props) => {
