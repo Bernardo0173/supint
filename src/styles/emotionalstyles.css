@@ -1,3 +1,7 @@
+.cardcontainer {
+  position: relative;
+}
+
 .danger,
 .fine,
 .warning,
@@ -5,82 +9,102 @@
   border: 2px solid rgb(92, 92, 92);
   border-radius: 20px;
   margin: 12px;
-  width: 310px; /* Aumentamos el ancho para permitir más espacio */
-  height: 200px; /* Cambiamos a auto para que se ajuste según el contenido */
+  width: 310px;
+  height: 200px;
   padding: 5px; /* Añadimos un poco de espacio interno */
   display: flex; /* Ajustamos a flex para que los elementos internos se distribuyan correctamente */
   flex-direction: column; /* Cambiamos a columna para que el contenido se alinee verticalmente */
   cursor: pointer;
 }
 
-.agentName,.clientName,.description{
+.agentName,
+.clientName,
+.description {
   font-family: Helvetica;
   font-size: 15px;
   overflow: hidden;
 }
-.agentName{
+.agentName {
   font-weight: bold;
   font-size: 25px;
 }
 
-.clientName{
+.clientName {
   font-weight: italic;
   font-size: 20px;
 }
 
-.description{
+.description {
   font-size: 12px;
 }
 
 .warning {
-  background-color: #ffed47;
+  background-color: #F1C40F;
   transition: background-color 0.3s;
 }
 .warning:hover {
-  background-color: #ff9e2e;
+  background-color: #face21;
 }
 .fine {
-  background-color: #28e247;
+  background-color: #00CC66;
   transition: background-color 0.3s;
 }
 .fine:hover {
-  background-color: #2dac59;
+  background-color: #04fa7f;
 }
 
 .danger {
-  background-color: #ff3c38;
+  background-color: #D90368;
   transition: background-color 0.3s;
 }
 
 .danger:hover {
-  background-color: #b93d49;
+  background-color: #f44f5f
 }
 
 .resting {
-  background-color: #85add6;
-  transition: background-color 0.3s;
+  background-color: #2274a5;
+  transition: background-color 0.5s, color 0.5s;
+  color: white;
 }
 
 .resting:hover {
-  background-color: rgb(104, 142, 199);
-}
-
-.cardcontainer {
-  position: relative;
+  background-color: rgb(99, 172, 245);
+  color: black;
 }
 
 .intervene {
   position: absolute;
   top: 50px;
-  left: 20px;
-  font-size: 50px;
-  color: #d5cfb8;
+  left: 25px;
+  font-size: 45px;
+  color: #fff8dc;
   cursor: pointer;
-  transition: color 0.3s;
-  transition: color 0.3s ease, stroke 0.3s ease; /* Smooth transition for color and stroke */
+  transition: color 0.4s top 0.4s left 0.4s;
 }
 
 .intervene:hover {
-  color: #d5cfb8; /* Change to your desired hover color */
-  stroke: black; /* Change to your desired stroke color */
+  color: #605733;
+  font-size: 50px;
+  top: 48px;
+  left: 23px;
+  
+}
+
+/* Permite responsividad dentro de la pantalla principal*/
+/* Limita tamaños para mantener responsividad */
+@media (max-width: 1024px) {
+  .danger,
+  .fine,
+  .warning,
+  .resting {
+    margin: auto;
+    width: 340px;
+    height: 150px;
+    padding: 4px; 
+  }
+  .cardcontainer {
+    position: relative;
+    margin: auto;
+  }
 }

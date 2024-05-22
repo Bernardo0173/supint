@@ -10,15 +10,15 @@
 }
 
 .kpi-button {
-  background-color: #EC6907; /* Color de fondo */
+  background-color: #d68446; /* Color de fondo */
   color: white; /* Color de texto */
-  margin: 10px ; /* Margen entre cada botón */
+  margin: auto; /* Margen entre cada botón */
   text-align: center; /* Alineación de texto */
   cursor: pointer; /* Cambiar el cursor al pasar el mouse */
   transition-duration: 0.3s; /* Duración de la transición */
-  width: 12rem; /* Ancho del botón */
-  height: 6rem; /* Altura responsiva */
-  border-radius: 20px; /* Bordes redondeados */
+  width: 12rem;
+  height: 6rem;
+  border-radius: 20px;
   font-size: 1rem;
 }
 
@@ -26,11 +26,28 @@
   background-color: #a06000; /* Cambiar el color de fondo al pasar el mouse */
 }
 
-/* Estilo personalizado para el modal dentro de la top-section */
 .modal-top-section .modal-dialog {
   position: absolute;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0);
   max-width: 80%;
+}
+
+@media (max-width: 1024px) {
+  .button-row {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  
+.kpi-button {
+  text-align: center; /* Alineación de texto */
+  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+  width:210px;
+  height:110px;
+  margin-bottom: 7px;
+  margin-left: 10px;
+}
 }
