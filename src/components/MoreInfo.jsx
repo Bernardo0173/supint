@@ -25,8 +25,11 @@ const MoreInfo = (props) => {
         <div className="description"> {props.Subtitle2} </div>
         <div className="description"> {props.Subtitle3} </div>
         <div className="description">{props.Text1}</div>
+        <div>
+        {props.cardStyle !== "resting" && (
+          <BsExclamationOctagonFill className="intervene" onClick={intervene} />
+        )}</div>
       </div>
-      <BsExclamationOctagonFill className="intervene" onClick={intervene} />
       <Modal
         show={showMore}
         onHide={() => setshowMore(!showMore)}

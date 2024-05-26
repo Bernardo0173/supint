@@ -6,7 +6,8 @@
 .fine,
 .warning,
 .resting {
-  border: 2px solid rgb(92, 92, 92);
+  color: #31330B;
+  border: 5px solid #FEFEFE;
   border-radius: 20px;
   margin: 12px;
   width: 310px;
@@ -23,6 +24,9 @@
   font-family: Helvetica;
   font-size: 15px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
 }
 .agentName {
   font-weight: bold;
@@ -63,28 +67,28 @@
 }
 
 .resting {
-  background-color: #2274a5;
+  background-color: #ADB07D;
   transition: background-color 0.5s, color 0.5s;
-  color: white;
-}
+  }
 
 .resting:hover {
-  background-color: rgb(99, 172, 245);
-  color: black;
+  background-color: #6D7034;
+  color: #EDEFC8;
+  
 }
 
 .intervene {
   position: absolute;
-  top: 50px;
+  top: 75px;
   left: 25px;
-  font-size: 45px;
-  color: #fff8dc;
+  font-size: 30px;
+  color: #a1231c;
   cursor: pointer;
   transition: color 0.4s top 0.4s left 0.4s;
 }
 
 .intervene:hover {
-  color: #605733;
+  color: #aba1a0;
   font-size: 50px;
   top: 48px;
   left: 23px;

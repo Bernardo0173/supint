@@ -7,6 +7,7 @@ import ValInc from './ValInc';
 import Accordion from 'react-bootstrap/Accordion';
 import ButPopMens from './ButPopMens';
 import MoreInfo from "./MoreInfo";
+import Redesign from "./Redesign";
 
 const MainScreen = () => {
   const agents = [
@@ -39,16 +40,9 @@ const MainScreen = () => {
     <div className="main-container">
       <div className="left-panel">
         {agents.map((agent) => (
-          <MoreInfo
-          cardStyle={agent.style} 
+          <Redesign 
           key={agent.name}
-          Title={agent.name}
-          Subtitle1={agent.client}
-          Subtitle2={agent.callTime}
-          Subtitle3= {agent.problemsSolved}
-          Text1={agent.description}
-          Additional1={agent.description}
-          />
+          agent={agent}/>
         ))}
       </div>
       <div className="right-panel">

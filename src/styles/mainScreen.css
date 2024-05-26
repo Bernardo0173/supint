@@ -6,18 +6,21 @@
 
 .left-panel {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas con ancho igual */
   grid-gap: 7.9px; /* Espacio entre las tarjetas */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
 }
-
+/* For Webkit browsers (Chrome, Safari) */
+.left-panel::-webkit-scrollbar {
+  display: none;
+}
 .right-panel {
   width: 30%;
   display: flex;
   flex-direction: column;
 }
-
 
 .top-section,
 .bottom-section {
@@ -26,9 +29,22 @@
   padding: 10px;
 }
 
-.bottom-section {
-  background-color: #eee;
+.header{
+  color:black;
 }
+
+
+
+.bottom-section {
+  border-radius: 10px;
+  border: 4px solid #FEFEFE;
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+/* For Webkit browsers (Chrome, Safari) */
+.bottom-section::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* Permite responsividad dentro de la pantalla principal*/
 /* Limita tamaños para mantener responsividad */
