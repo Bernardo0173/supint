@@ -2,9 +2,9 @@
   display: flex;
   height: 100vh;
   position: relative;
+  padding-top: 56px; /* Altura del header */
   /* Esto permite posicionar el botón y la ventana de notificaciones de forma absoluta dentro del contenedor */
 }
-
 
 .left-panel {
   flex: 1;
@@ -14,31 +14,13 @@
   /* Crea 3 columnas con ancho igual */
   grid-gap: 10px;
   /* Espacio entre las tarjetas */
+  margin-top: 1rem;
 }
 
 .right-panel {
   width: 30%;
   display: flex;
   flex-direction: column;
-}
-
-.notifications-panel {
-  position: fixed;
-  right: 50px;
-  /* Más hacia el centro desde el borde derecho */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 200px;
-  /* Ancho de la ventana de notificaciones */
-  height: 300px;
-  /* Altura de la ventana de notificaciones */
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  z-index: 90;
-  /* Menor que el botón para que no sobreponga */
-  padding: 20px;
-  overflow-y: auto;
-  /* Permite desplazarse si el contenido es muy largo */
 }
 
 .top-section,
@@ -50,4 +32,28 @@
 
 .bottom-section {
   background-color: #eee;
+}
+
+.custom-carousel .carousel-control-prev-icon,
+.custom-carousel .carousel-control-next-icon {
+  background-color: black;
+}
+
+.custom-carousel .carousel-indicators li {
+  background-color: black;
+}
+
+.custom-carousel .carousel-indicators .active {
+  background-color: gray; /* O cualquier otro color para la indicación activa */
+}
+
+/* Ajuste del header */
+.header-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 56px; /* Asegúrate de que esta altura coincida con el padding-top de .main-container */
 }

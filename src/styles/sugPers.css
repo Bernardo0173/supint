@@ -1,22 +1,22 @@
 /* sugPers.css */
-.sugPers-container {
+.sugpers-container {
     margin: 0; /* Ajustado para Offcanvas */
     width: 100%; /* Ajustado para llenar el Offcanvas */
     padding: 20px;
     background-color: rgb(235, 235, 235);
     border-radius: 5px;
 }
-  
-.sugPers-title {
+
+.sugpers-title {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
-  
-.sugPers-content {
+
+.sugpers-content {
     margin-bottom: 20px;
 }
-  
-.sugPers-button {
+
+.sugpers-button {
     padding: 5px 10px;
     cursor: pointer;
     background-color: #007BFF;
@@ -25,4 +25,40 @@
     border-radius: 5px;
     display: block; /* Opcional: para hacer que el botón ocupe el ancho completo */
     width: 100%; /* Opcional: para hacer que el botón ocupe el ancho completo */
+}
+
+.expand-enter {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease-out, opacity 300ms ease-out;
+}
+
+.expand-enter-active {
+    max-height: 200px; /* Ajusta según sea necesario */
+    opacity: 1;
+}
+
+.expand-exit {
+    max-height: 200px; /* Ajusta según sea necesario */
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 300ms ease-in, opacity 300ms ease-in;
+}
+
+.expand-exit-active {
+    max-height: 0;
+    opacity: 0;
+}
+
+.expandable-content {
+    margin-top: 10px;
+}
+
+.action-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
