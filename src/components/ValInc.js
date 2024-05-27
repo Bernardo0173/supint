@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function ValInc({ tipoIncidencia, eventKey, onDelete }) {
+function ValInc({ tipoIncidencia, zona, desc, eventKey, onDelete }) {
   const [message, setMessage] = useState("");
   const [buttonText, setButtonText] = useState("Enviar");
 
@@ -23,7 +23,9 @@ function ValInc({ tipoIncidencia, eventKey, onDelete }) {
       <Accordion.Body>
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Mensaje a enviar</Form.Label>
+            <Form.Label>Zona: {zona}</Form.Label>
+            <p></p>
+            <Form.Label>{desc}</Form.Label>
             <Form.Control 
               as="textarea" 
               rows={3} 
