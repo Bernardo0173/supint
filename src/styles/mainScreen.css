@@ -8,7 +8,7 @@
 
 .left-panel {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* Crea 3 columnas con ancho igual */
@@ -16,7 +16,6 @@
   /* Espacio entre las tarjetas */
   margin-top: 1rem;
 }
-
 .right-panel {
   width: 30%;
   display: flex;
@@ -29,6 +28,12 @@
   margin: 10px;
   padding: 10px;
 }
+
+.header{
+  color:black;
+}
+
+
 
 .bottom-section {
   background-color: #eee;

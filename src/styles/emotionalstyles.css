@@ -1,0 +1,114 @@
+.cardcontainer {
+  position: relative;
+}
+
+.danger,
+.fine,
+.warning,
+.resting {
+  color: #31330B;
+  border: 5px solid #FEFEFE;
+  border-radius: 20px;
+  margin: 12px;
+  width: 310px;
+  height: 200px;
+  padding: 5px; /* Añadimos un poco de espacio interno */
+  display: flex; /* Ajustamos a flex para que los elementos internos se distribuyan correctamente */
+  flex-direction: column; /* Cambiamos a columna para que el contenido se alinee verticalmente */
+  cursor: pointer;
+}
+
+.agentName,
+.clientName,
+.description {
+  font-family: Helvetica;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+}
+.agentName {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.clientName {
+  font-weight: italic;
+  font-size: 20px;
+}
+
+.description {
+  font-size: 12px;
+}
+
+.warning {
+  background-color: #F1C40F;
+  transition: background-color 0.3s;
+}
+.warning:hover {
+  background-color: #face21;
+}
+.fine {
+  background-color: #00CC66;
+  transition: background-color 0.3s;
+}
+.fine:hover {
+  background-color: #04fa7f;
+}
+
+.danger {
+  background-color: #D90368;
+  transition: background-color 0.3s;
+}
+
+.danger:hover {
+  background-color: #f44f5f
+}
+
+.resting {
+  background-color: #ADB07D;
+  transition: background-color 0.5s, color 0.5s;
+  }
+
+.resting:hover {
+  background-color: #6D7034;
+  color: #EDEFC8;
+  
+}
+
+.intervene {
+  position: absolute;
+  top: 75px;
+  left: 25px;
+  font-size: 30px;
+  color: #a1231c;
+  cursor: pointer;
+  transition: color 0.4s top 0.4s left 0.4s;
+}
+
+.intervene:hover {
+  color: #aba1a0;
+  font-size: 50px;
+  top: 48px;
+  left: 23px;
+  
+}
+
+/* Permite responsividad dentro de la pantalla principal*/
+/* Limita tamaños para mantener responsividad */
+@media (max-width: 1024px) {
+  .danger,
+  .fine,
+  .warning,
+  .resting {
+    margin: auto;
+    width: 340px;
+    height: 150px;
+    padding: 4px; 
+  }
+  .cardcontainer {
+    position: relative;
+    margin: auto;
+  }
+}

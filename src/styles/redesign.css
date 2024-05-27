@@ -1,0 +1,72 @@
+.callStatus {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+
+.callTimer {
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #83e486;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;  
+    border: white 5px solid;
+}
+
+.callIssue {
+    font-size: 1rem;
+    display: flex;
+}
+
+.agentCard{
+    width:330px;
+    overflow:hidden;
+    cursor: pointer;
+    
+}
+
+
+.warning {
+    background-color: #F1C40F;
+    transition: background-color 0.3s;
+  }
+  .warning:hover {
+    background-color: #face21;
+  }
+  .fine {
+    background-color: #00CC66;
+    transition: background-color 0.3s;
+  }
+  .fine:hover {
+    background-color: #04fa7f;
+  }
+  
+  .danger {
+    background-color: #D90368;
+    transition: background-color 0.3s;
+  }
+  
+  .danger:hover {
+    background-color: #f44f5f
+  }
+  
+  .resting {
+    background-color: #ADB07D;
+    transition: background-color 0.5s, color 0.5s;
+    }
+  
+  .resting:hover {
+    background-color: #6D7034;
+    color: #EDEFC8;
+    
+  }

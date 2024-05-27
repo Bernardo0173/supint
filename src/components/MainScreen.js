@@ -1,9 +1,8 @@
+import "../styles/emotionalStyles.css";
 import React, { useState } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AgenteCard from "./AgenteCard";
-import "../styles/mainScreen.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Stats from './Stats';
 import Accordion from 'react-bootstrap/Accordion';
 import NotificationsOffCanvas from './NotificationsOffCanvas';
@@ -13,6 +12,8 @@ import StatsDisplay from "./StatsDisplay";
 import KpiAccordionPanel from "./KpiAccordionPanel";
 import StatsCarousel from "./StatsCarousel";
 import Header from "./Header";
+import MoreInfo from "./MoreInfo";
+import Redesign from "./Redesign";
 
 const MainScreen = () => {
   const agents = [
@@ -52,15 +53,9 @@ const MainScreen = () => {
       <Header />
       <div className="left-panel">
         {agents.map((agent) => (
-          <AgenteCard
-            key={agent.name}
-            agentName={agent.name}
-            clientName={agent.client}
-            callTime={agent.callTime}
-            solvedProblems={agent.problemsSolved}
-            description={agent.description}
-            style={agent.style}
-          />
+          <Redesign 
+          key={agent.name}
+          agent={agent}/>
         ))}
       </div>
       <div className="right-panel">
