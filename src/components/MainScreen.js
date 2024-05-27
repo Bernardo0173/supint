@@ -1,12 +1,13 @@
 import "../styles/emotionalstyles.css";
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
-import Stats from "./Stats";
+//import Stats from "./Stats";
 import NotificationsOffCanvas from "./NotificationsOffCanvas";
-import ValInc from "./ValInc";
-import Accordion from "react-bootstrap/Accordion";
+//import ValInc from "./ValInc";
+//import Accordion from "react-bootstrap/Accordion";
 import CardsContainer from "./CardsContainer";
 import IncidenciasPanel from "./IncidenciasPanel";
+import SimpleSlider from "./Carrucel";
 
 const MainScreen = () => {
 
@@ -15,7 +16,7 @@ const MainScreen = () => {
       <CardsContainer />
       <div className="right-panel">
         <div className="top-section">
-          <Stats /> {/* Aquí se renderiza el componente Stats */}
+          <SimpleSlider /> {/* Aquí se renderiza el componente Stats */}
         </div>
         <IncidenciasPanel /> {/* Aquí se renderiza el componente IncidenciasPanel */}
       </div>

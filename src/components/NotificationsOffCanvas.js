@@ -30,6 +30,8 @@ function NotificationsOffCanvas() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <SugPers isOpen={isSugPersOpen} toggle={toggleSugPers} />
+                    <br/>
+                    <SugPers isOpen={isSugPersOpen} toggle={toggleSugPers} />
                 </Offcanvas.Body>
             </Offcanvas>
         </>

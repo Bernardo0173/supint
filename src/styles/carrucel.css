@@ -1,0 +1,17 @@
+
+.chart-container {
+    width: 350px; /* Ajusta según tus necesidades */
+    margin: auto; /* Centra horizontalmente */
+    
+  }
+  
+.d-flex {
+    flex:1;
+    display: flex;
+    justify-content: center;
+  }
+
+.doughnut-chart {
+    width: 600px;
+    height: auto;
+  }

@@ -1,0 +1,33 @@
+.callStatus {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+
+.callTimer {
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #83e486;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;  
+    border: white 5px solid;
+}
+
+.callIssue {
+    font-size: 1rem;
+    display: flex;
+}
+
+.cool{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+}

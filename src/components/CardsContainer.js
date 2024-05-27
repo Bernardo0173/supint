@@ -1,42 +1,62 @@
 import "../styles/mainScreen.css";
 import React, { useState, useEffect } from "react";
-import MoreInfo from "./MoreInfo";
 import io from "socket.io-client";
+import CallCard from "./CallCard";
+//import Container from 'react-bootstrap/Container';
+import {Row, Col} from "react-bootstrap";
 
-const socket = io("http://127.0.0.1:3001");
+const socket = io("http://127.0.0.1:8080");
 
-const CardsContainer = ({ cards }) => {
+const CardsContainer = () => {
   const [calls, setCalls] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/llamada/consultarLlamadas")
+    // Inicialmente cargar datos
+    fetch("http://127.0.0.1:8080/llamada/infoTarjetasV2")
       .then((response) => response.json())
-      .then((data) => setCalls(data));
+      .then((data) => setCalls(data))
+      .catch((error) => console.error("Error fetching data:", error));
 
-    socket.on("newCall", (newCall) => {
-      setCalls((prevCalls) => [...prevCalls, newCall]);
+    // Configurar el socket para escuchar eventos
+    socket.on("newPage", (llamadas) => {
+      console.log("newCall received:", llamadas);
+      setCalls(llamadas);
     });
 
+    // Limpiar el socket al desmontar el componente
     return () => {
       socket.off("newCall");
     };
   }, []);
 
+  const emotions = {
+    positive: "success",
+    negative: "danger",
+    neutral: "warning",
+    mixed: "resting",
+  };
+
   return (
-    <div className="left-panel">
-      {calls.map((call) => (
-        <MoreInfo
-          cardStyle={call.IdLlamada}
-          key={call.IdLlamada}
-          Title={call.IdLlamada}
-          Subtitle1={call.IdLlamada}
-          Subtitle2={call.IdLlamada}
-          Subtitle3={call.IdLlamada}
-          Text1={call.IdLlamada}
-          Additional1={call.IdLlamada}
-        />
-      ))}
-    </div>
+      <Row lg={2} md={1} sm={1} xs={1}>
+        {calls.map((call, index) => (
+          <Col key={call.Sentiment} className="hola">
+            <CallCard
+              initialCallStatus={emotions[call.Sentiment]}
+              asunto={call.Asunto}
+              notas = {call.Notas}
+              nombreCliente = {call.CName +  " " + call.CLastName}
+              nombreAgente = {call.Nombre + " " + call.ApellidoP}
+              id = {call.IdLlamada}
+              zona = {call.ZoneName}
+              fecha = {call.Fecha}
+              paquete = {call.PName}
+              precio = {call.Precio}
+              numLlamadas = {call.numLlamadas}
+              celular = {call.Celular}
+            />
+          </Col>
+        ))}
+      </Row>
   );
 };
 

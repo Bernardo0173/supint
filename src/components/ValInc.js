@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function ValInc({ tipoIncidencia, eventKey, onDelete }) {
+function ValInc(props) {
   const [message, setMessage] = useState("");
   const [buttonText, setButtonText] = useState("Enviar");
 
@@ -13,17 +13,19 @@ function ValInc({ tipoIncidencia, eventKey, onDelete }) {
       alert('Mensaje enviado: ' + message);
       setButtonText("Enviar");
       setMessage("");
-      onDelete();  // Eliminar la incidencia después de enviar el mensaje
+      props.onDelete();  // Eliminar la incidencia después de enviar el mensaje
     }, 2000);
   };
 
   return (
-    <Accordion.Item eventKey={eventKey}>
-      <Accordion.Header>Tipo de incidencia: {tipoIncidencia}</Accordion.Header>
+    <Accordion.Item eventKey={props.eventKey}>
+      <Accordion.Header><strong>{props.tipoIncidencia}</strong></Accordion.Header>
       <Accordion.Body>
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Mensaje a enviar</Form.Label>
+            <Form.Label><strong>Descripcion: </strong>{props.descripcion}</Form.Label>
+            <br></br>
+            <Form.Label><strong>Zona: </strong>{props.zona}</Form.Label>
             <Form.Control 
               as="textarea" 
               rows={3} 
@@ -32,7 +34,7 @@ function ValInc({ tipoIncidencia, eventKey, onDelete }) {
             />
           </Form.Group>
           <div className="d-flex justify-content-between">
-            <Button variant="danger" onClick={onDelete}>
+            <Button variant="danger" onClick={props.onDelete}>
               Eliminar
             </Button>
             <Button variant="primary" onClick={handleSend}>
