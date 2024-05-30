@@ -2,18 +2,14 @@ import "../styles/emotionalStyles.css";
 import React, { useState } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AgenteCard from "./AgenteCard";
-import Stats from './Stats';
 import Accordion from 'react-bootstrap/Accordion';
-import NotificationsOffCanvas from './NotificationsOffCanvas';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ValInc from './ValInc';
-import ButPopMens from './ButPopMens';
-import StatsDisplay from "./StatsDisplay";
-import KpiAccordionPanel from "./KpiAccordionPanel";
-import StatsCarousel from "./StatsCarousel";
 import Header from "./Header";
-import MoreInfo from "./MoreInfo";
 import Redesign from "./Redesign";
+import GrafCard from "./GrafCard";
+
 
 const MainScreen = () => {
   const agents = [
@@ -43,6 +39,7 @@ const MainScreen = () => {
   ];
 
   const [inc, setInc] = useState(initialInc);
+  const [activeTab, setActiveTab] = useState("incidencias");
 
   const handleDelete = (id) => {
     setInc(inc.filter(incidencia => incidencia.id !== id));
@@ -59,25 +56,40 @@ const MainScreen = () => {
         ))}
       </div>
       <div className="right-panel">
-        <div className="top-section">
-          <StatsCarousel />
+        <div className="button-group">
+          <ToggleButtonGroup type="radio" name="options" defaultValue={1} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-100">
+            <ToggleButton id="tbg-radio-1" value={1} className="tab-button">
+              Incidencias
+            </ToggleButton>
+            <ToggleButton id="tbg-radio-2" value={2} className="tab-button">
+              Gráficas
+            </ToggleButton>
+          </ToggleButtonGroup>
         </div>
-        <div className="bottom-section">
-          {inc.length === 0 ? (
-            <p>No hay reportes de incidencias por el momento</p>
+        <div className="content-section">
+          {activeTab === "incidencias" ? (
+            <div className="bottom-section">
+              {inc.length === 0 ? (
+                <p>No hay reportes de incidencias por el momento</p>
+              ) : (
+                <Accordion>
+                  {inc.map((incidencia) => (
+                    <ValInc
+                      key={incidencia.id}
+                      eventKey={incidencia.id.toString()}
+                      tipoIncidencia={incidencia.tipoIncidencia}
+                      zona={incidencia.zona}
+                      desc={incidencia.desc}
+                      onDelete={() => handleDelete(incidencia.id)}
+                    />
+                  ))}
+                </Accordion>
+              )}
+            </div>
           ) : (
-            <Accordion>
-              {inc.map((incidencia) => (
-                <ValInc
-                  key={incidencia.id}
-                  eventKey={incidencia.id.toString()}
-                  tipoIncidencia={incidencia.tipoIncidencia}
-                  zona={incidencia.zona}
-                  desc={incidencia.desc}
-                  onDelete={() => handleDelete(incidencia.id)}
-                />
-              ))}
-            </Accordion>
+            <div className="top-section">
+              <GrafCard/>
+            </div>
           )}
         </div>
       </div>
