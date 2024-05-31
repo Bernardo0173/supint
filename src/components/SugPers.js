@@ -1,9 +1,10 @@
+// SugPers.js
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Button from 'react-bootstrap/Button';
 import '../styles/sugPers.css'; // Asegúrate de tener este archivo CSS
 
-function SugPers({ isOpen, toggle }) {
+function SugPers({ isOpen, title, content, actions, onDelete }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExpand = () => {
@@ -14,10 +15,13 @@ function SugPers({ isOpen, toggle }) {
     <div className="sugpers-container">
       {isOpen && (
         <div>
-          <h2 className="sugpers-title">Sugerencia de sistema</h2>
-          <p className="sugpers-content">Recomendamos tener más agentes en este periodo debido al desempeño analizado.</p>
+          <h2 className="sugpers-title">{title}</h2>
+          <p className="sugpers-content">{content}</p>
           <Button variant="primary" onClick={handleExpand} className="sugpers-button">
             Ver Acciones
+          </Button>
+          <Button variant="danger" onClick={onDelete} className="sugpers-button">
+            Eliminar Notificación
           </Button>
           <CSSTransition
             in={isExpanded}
@@ -26,9 +30,9 @@ function SugPers({ isOpen, toggle }) {
             unmountOnExit
           >
             <div className="expandable-content">
-              <div className="action-item">Acción 1</div>
-              <div className="action-item">Acción 2</div>
-              <div className="action-item">Acción 3</div>
+              {actions.map((action, index) => (
+                <div key={index} className="action-item">{action}</div>
+              ))}
             </div>
           </CSSTransition>
         </div>
