@@ -1,0 +1,29 @@
+/* header.css */
+.header-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(
+    90deg,
+    rgb(255, 137, 53) 0.41%,
+    rgb(234, 168, 121) 40.68%,
+    rgb(226, 108, 163) 64.12%,
+    rgb(209, 32, 115) 97.82%
+  );
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.button-group img {
+  margin-right: 10px; /* Espacio entre la imagen y el botón */
+}

@@ -1,30 +1,53 @@
 .stats {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 
 .button-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .kpi-button {
-    background-color: #EC6907; /* Color de fondo */
-    color: white; /* Color de texto */
-    padding: 5px 5px; /* Espaciado */
-    margin: 10px 10px; /* Margen */
-    text-align: center; /* Alineación de texto */
-    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
-    transition-duration: 0.3s; /* Duración de la transición */
-    width: auto; /* Ancho del botón */
-    height: 18rem; /* Altura responsiva */
-    flex:content;
-    border-radius: 20px; /* Bordes redondeados */
-    font-size: 1.5rem;
+  background-color: #F0CBC9; /* Color de fondo */
+  color: #31330B; /* Color de texto */
+  margin: auto; /* Margen entre cada botón */
+  text-align: center; /* Alineación de texto */
+  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+  transition-duration: 0.3s; /* Duración de la transición */
+  width: 12rem;
+  height: 6rem;
+  border-radius: 10px;
+  border: 5px solid #FEFEFE;
+  font-size: 1rem;
 }
 
 .kpi-button:hover {
-    background-color: #a06000; /* Cambiar el color de fondo al pasar el mouse */
+  background-color: #ffe7e6; /* Cambiar el color de fondo al pasar el mouse */
+}
+
+.modal-top-section .modal-dialog {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 80%;
+}
+
+@media (max-width: 1024px) {
+  .button-row {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  
+.kpi-button {
+  text-align: center; /* Alineación de texto */
+  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+  width:210px;
+  height:110px;
+  margin-left: 10px;
+}
 }

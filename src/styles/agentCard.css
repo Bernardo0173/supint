@@ -1,37 +1,55 @@
 .card {
-  border: 2px solid black; 
+  border: 4px solid black; 
   border-radius: 20px;
   margin: 20px;
-  width: auto; /* Aumentamos el ancho para permitir más espacio */
-  height: auto; /* Cambiamos a auto para que se ajuste según el contenido */
-  padding: 20px; /* Añadimos un poco de espacio interno */
-  display: flex; /* Ajustamos a flex para que los elementos internos se distribuyan correctamente */
-  flex-direction: column; /* Cambiamos a columna para que el contenido se alinee verticalmente */
+  width: auto;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
-  
-  textarea {
-    width: 100%; 
-    height: 100%; 
-    border: none; 
-    resize: none; 
-    padding: 10px; 
-  }
-  
+
+textarea {
+  width: 100%; 
+  height: 100%; 
+  border: none; 
+  resize: none; 
+  padding: 10px; 
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.left, .right {
+  width: 50%;
+  padding: 10px;
+}
+
+.inline {
+  display: inline-block;
+  margin: 5px;
+}
+
+/* Limita tamaños para mantener responsividad */
+@media (max-width: 1024px) {
   .container {
-    display: flex;
-    width: 100%;
+    flex-direction: column; /* Stack elements vertically on smaller screens */
   }
-  
-  .left {
-    width: 50%;
-    padding: 10px;
+
+  .left, .right {
+    width: 100%; /* Make each section take full width */
+    padding: 10px 0; /* Adjust padding for full width */
   }
-  
-  .right {
-    width: 50%;
+
+  .card {
+    margin: 10px; /* Reduce margin for smaller screens */
+    padding: 15px; /* Adjust padding for smaller screens */
   }
-  
-  .inline {
-    display: 5px;
-    margin: 5px
+
+  textarea {
+    padding: 8px; /* Adjust padding for smaller screens */
   }
+}
