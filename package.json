@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
     "lightweight-charts": "^4.1.4",
@@ -26,6 +27,7 @@
     "react-transition-group": "^4.4.5",
     "recharts": "^2.12.7",
     "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.5",
     "victory": "^37.0.2",
     "web-vitals": "^2.1.4"
   },

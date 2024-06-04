@@ -9,13 +9,6 @@
 .left-panel {
   flex: 1;
   overflow-y: scroll;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* Crea 3 columnas con ancho igual */
-  grid-gap: 10px;
-  /* Espacio entre las tarjetas */
-  margin-top: 1rem;
-  width: 65%;
 }
 
 .right-panel {

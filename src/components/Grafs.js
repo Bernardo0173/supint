@@ -68,7 +68,7 @@ export default function Grafs() {
       </div>
       <div className="chart-container" style={{ marginTop: '20px' }}>
         {activeChart === 0 && <InfoCirculo/>}
-        {activeChart === 1 && <InfoLlamadas labels={labels} datasets={datasets} />}
+        {activeChart === 1 && <InfoLlamadas/>}
         {activeChart === 2 && <InfoCC />}
       </div>
     </div>

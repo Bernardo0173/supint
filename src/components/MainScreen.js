@@ -9,6 +9,8 @@ import ValInc from './ValInc';
 import Header from "./Header";
 import Redesign from "./Redesign";
 import GrafCard from "./GrafCard";
+import PanelInc from "./PanelInc";
+import CardsContainer from "./CardsContainer";
 
 
 const MainScreen = () => {
@@ -48,13 +50,7 @@ const MainScreen = () => {
   return (
     <div className="main-container">
       <Header />
-      <div className="left-panel">
-        {agents.map((agent) => (
-          <Redesign 
-          key={agent.name}
-          agent={agent}/>
-        ))}
-      </div>
+      <CardsContainer />
       <div className="right-panel">
         <div className="button-group">
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-100">
@@ -68,24 +64,7 @@ const MainScreen = () => {
         </div>
         <div className="content-section">
           {activeTab === "incidencias" ? (
-            <div className="bottom-section">
-              {inc.length === 0 ? (
-                <p>No hay reportes de incidencias por el momento</p>
-              ) : (
-                <Accordion>
-                  {inc.map((incidencia) => (
-                    <ValInc
-                      key={incidencia.id}
-                      eventKey={incidencia.id.toString()}
-                      tipoIncidencia={incidencia.tipoIncidencia}
-                      zona={incidencia.zona}
-                      desc={incidencia.desc}
-                      onDelete={() => handleDelete(incidencia.id)}
-                    />
-                  ))}
-                </Accordion>
-              )}
-            </div>
+            <PanelInc />
           ) : (
             <div className="top-section">
               <GrafCard/>

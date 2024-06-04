@@ -29,7 +29,7 @@ function NotificationsOffCanvas() {
                     <Offcanvas.Title>Notificaciones</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <SugPers isOpen={isSugPersOpen} toggle={toggleSugPers} />
+                    <SugPers isOpen={isSugPersOpen} toggle={toggleSugPers} title = "HOLA"/>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
