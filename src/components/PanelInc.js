@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ValInc from "./ValInc";
 import { Accordion } from "react-bootstrap";
 import io from "socket.io-client";
 import "../styles/mainScreen.css";
+import GlobalContext  from "./GlobalVariable/GlobalContext";
 
 
-const socket = io("http://127.0.0.1:8080");
+const socket = io("http://44.209.22.101");
+//const socket = io("http://127.0.0.1:8080");
 
 const PanelInc = ({ increment }) => {
 
 	const [inc, setInc] = useState([]);
+  const { url } = useContext(GlobalContext);
 
 	useEffect(() => {
     //fetch("http://44.209.22.101:8080/llamada/infoIncidencias")
-    fetch("http://127.0.0.1:8080/llamada/infoIncidencias")
+    fetch(`http://${url}/llamada/infoIncidencias`)
       .then((response) => response.json())
       .then((data) => setInc(data));
 

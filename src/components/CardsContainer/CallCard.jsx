@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav";
-import Sentiment from "./sentiment";
+//import Sentiment from "./sentiment";
 import ClientContracts from "./clientContract";
 import AgentKpis from "./agentKpis";
 import MessageToAgent from "./messageToAgent";
@@ -16,9 +16,16 @@ import {
   BsFillTelephoneOutboundFill,
 } from "react-icons/bs";
 import { PiCellSignalSlashBold, PiPhoneX, PiTelevisionThin } from "react-icons/pi";
+import { IoWarningOutline } from "react-icons/io5";
 import { RiZzzFill } from "react-icons/ri";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Chat from "./Chatbox";
+import GlobalContext from "../GlobalVariable/GlobalContext";
+import io from "socket.io-client";
+import { toast } from "react-hot-toast";
+
+const socket2 = io("http://127.0.0.1:8080");
+const socket = io("http://44.209.22.101:8080");
 
 function CallCard(props) {
 
@@ -30,6 +37,9 @@ function CallCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [seconds, setSeconds] = useState(initialTime);
+  const { url } = useContext(GlobalContext);
+  const [emergencyId, setEmergencyId] = useState("");
+  const [Icon, setIcon] = useState(<PiCellSignalSlashBold size={70} color="black" />);
 
   const emotions = {
     positive: "success",
@@ -43,22 +53,88 @@ function CallCard(props) {
       setSeconds(seconds => seconds + 1);
     }, 1000);
 
+    // const interval2 = setInterval(() => {
+    //   fetch(`http://${url}/llamada/obtenerSentimiento/${props.id}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       setCallStatus(emotions[data.Sentiment]);
+    //       console.log(callStatus);
+    //     })
+    //     .catch(error => console.error('Error:', error));
+    // }, 5000);
+
+    if (emergencyId === props.id) {
+      setIcon(<RiZzzFill size={70} color="black" />);
+    }
+
+    if (!props.estado) {
+      setIcon(<RiZzzFill size={70} color="black" />);
+    } else {
+      switch (props.asunto) {
+        case 'internet':
+          setIcon(<PiCellSignalSlashBold size={70} color="black" />);
+          break;
+        case 'telefonia':
+          setIcon(<PiPhoneX size={70} color="black" />);
+          break;
+        case 'television':
+          setIcon(<PiTelevisionThin size={70} color="black" />);
+          break;
+        default:
+          setIcon(<PiCellSignalSlashBold size={70} color="black" />);
+      }
+    }
+
     const interval2 = setInterval(() => {
-      fetch('http://127.0.0.1:8080/llamada/obtenerSentimiento/c9e70e8d-441f-4b80-9efa-9f7f907da0a0')
+      fetch(`http://${url}/llamada/obtenerSentimiento/${props.id}`)
         .then(response => response.json())
         .then(data => {
-          setCallStatus(emotions[data.Sentiment]); // Asume que la respuesta tiene una propiedad 'status'
+          if (data.Sentiment !== undefined) {
+            setCallStatus(emotions[data.Sentiment]);
+            console.log(callStatus);
+          }
         })
         .then(() => console.log('Call status:', callStatus))
         .catch(error => console.error('Error:', error));
-    }, 10000);
+    }, 2500);
+
+    socket.on("sentiment", ({ sentiment }) => {
+      if (sentiment !== undefined) {
+        console.log("sentiment", sentiment);
+        setCallStatus(emotions[sentiment]);
+      }
+
+    })
+
+    socket.on("EMERGENCIA", (pr) => {
+      console.log("EMERGENCIA", pr);
+      setEmergencyId(pr.id);
+
+      if (pr.id === props.id) {
+        setCallStatus("danger");
+        setIcon(<IoWarningOutline size={70} color="black" />);
+
+        toast.error(`¡Urgente! ${pr.nombre} ${pr.apellido} necesita ayuda inmediata en la llamada ${pr.id}.`, {
+          duration: 5000,
+          position: "top-left",
+          style: {
+            fontSize: '20px', // Cambia esto al tamaño de fuente que prefieras
+          }
+        });
+
+      }
+    })
 
     return () => {
       clearInterval(interval);
+      // clearInterval(interval2);
+      socket.off("EMERGENCIA");
+      socket.off("sentiment");
+      socket2.off("sentiment");
       clearInterval(interval2);
     }
     // Esto limpia el intervalo cuando el componente se desmonta
-  }, []);
+  }, [props.estado, props.asunto, emergencyId]);
 
   const minutes = Math.floor(seconds / 60);
   const displaySeconds = seconds % 60;
@@ -83,29 +159,13 @@ function CallCard(props) {
   };
 
 
-  let Icon;
-  switch (props.asunto) {
-    case 'internet':
-      Icon = <PiCellSignalSlashBold size={70} color="black" />;
-      break;
-    case 'telefonia':
-      Icon = <PiPhoneX size={70} color="black" />;
-      break;
-    // Agrega más casos según sea necesario
-    case 'television':
-      Icon = <PiTelevisionThin size={70} color="black" />;
-      break;
-    default:
-      Icon = <PiCellSignalSlashBold size={70} color="black" />;
-  }
-
   return (
     <>
       {/* Call card */}
       <Card style={{ maxWidth: "400px", overflow: "hidden" }}>
         <Row>
           <Col sm={3} md={3} className="pe-0" onClick={handleShow}>
-            <div className={`bg-${props.initialCallStatus} callStatus`}>
+            <div className={`bg-${props.estado ? callStatus : 'info'} callStatus`}>
               {Icon}
             </div>
           </Col>
@@ -132,7 +192,7 @@ function CallCard(props) {
                     </div>
                   </Col>
                   <Col>
-                    <Button className="btn-sm text-black" variant={callStatus}>
+                    <Button className="btn-sm text-black" variant={props.estado ? callStatus : "info"}>
                       <BsFillTelephoneOutboundFill /> Intervenir
                     </Button>
                   </Col>

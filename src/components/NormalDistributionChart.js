@@ -1,7 +1,8 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import GlobalContext from './GlobalVariable/GlobalContext';
 
 // Registrar los componentes que vas a usar
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -9,9 +10,10 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const NormalDistributionChart = () => {
 
   const [hour, setHour] = useState([]);
-  
+  const { url } = useContext(GlobalContext);
+
   useEffect(() => {
-    fetch("http://127.0.0.1:8080/llamada/llamadasPorHoras")
+    fetch(`http://${url}/llamada/llamadasPorHoras`)
     .then((response) => response.json())
     .then((data) => {
       setHour(data);

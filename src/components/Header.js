@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -10,6 +10,7 @@ import "../styles/notificationsOffCanvas.css";
 import "../styles/header.css"; // Asegúrate de tener este archivo CSS
 import izziLogo from "../elements/izziN.png";
 import cartaIcon from "../elements/card-text.svg"; // Asegúrate de tener esta imagen en la carpeta correcta
+import GlobalContext from "./GlobalVariable/GlobalContext";
 
 const initialNotifications = [
   {
@@ -30,41 +31,42 @@ function Header() {
   const [agentesInactivos, setAgectesInactivos] = useState(0);
   const [emocionesNegativas, setEmocionesNegativas] = useState(0);
   const [tiempoLlamada, setTiempoLlamada] = useState(0);
+  const { url } = useContext(GlobalContext);
+ 
+  useEffect(() => {
+    const fetchApiData = () => {
+      console.log("Fetching data...");
 
-useEffect(() => {
-  const fetchApiData = () => {
-    console.log("Fetching data...");
-    
-    const urls = [
-      "http://127.0.0.1:8080/llamada/averageCallDuration",
-      "http://127.0.0.1:8080/llamada/negativeCallsCount",
-      "http://127.0.0.1:8080/empleado/agentesActivos"
-    ];
+      const urls = [
+        `http://${url}/llamada/averageCallDuration`,
+        `http://${url}/llamada/negativeCallsCount`,
+        `http://${url}/empleado/agentesActivos`,
+      ];
 
-    Promise.all(urls.map(url =>
-      fetch(url).then(response => response.json())
-    ))
-    .then(dataArray => {
-      setTiempoLlamada(dataArray[0][0].averageDuration);
-      setEmocionesNegativas(dataArray[1][0].count);
-      setAgectesInactivos(dataArray[2][0].Inactivos);
+      Promise.all(
+        urls.map((url) => fetch(url).then((response) => response.json()))
+      )
+        .then((dataArray) => {
+          setTiempoLlamada(dataArray[0][0].averageDuration);
+          setEmocionesNegativas(dataArray[1][0].count);
+          setAgectesInactivos(dataArray[2][0].Inactivos);
 
-      console.log(dataArray[0][0].averageDuration);
-      console.log(dataArray[1][0].count);
-      console.log(dataArray[2][0].Inactivos);
+          console.log(dataArray[0][0].averageDuration);
+          console.log(dataArray[1][0].count);
+          console.log(dataArray[2][0].Inactivos);
 
-      console.log(dataArray);
-    })
-    .catch(error => console.error("Error fetching data:", error));
-  };
+          console.log(dataArray);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    };
 
-  // Llama a fetchApiData inmediatamente y luego cada 5 segundos
-  fetchApiData();
-  const intervalId = setInterval(fetchApiData, 5000); // 5000 ms = 5 segundos
+    // Llama a fetchApiData inmediatamente y luego cada 5 segundos
+    fetchApiData();
+    const intervalId = setInterval(fetchApiData, 5000); // 5000 ms = 5 segundos
 
-  // Limpiar el intervalo cuando el componente se desmonte
-  return () => clearInterval(intervalId);
-}, []);
+    // Limpiar el intervalo cuando el componente se desmonte
+    return () => clearInterval(intervalId);
+  }, []);
 
   const [show, setShow] = useState(false);
   const [showMessageCanvas, setShowMessageCanvas] = useState(false);

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import GlobalContext from './GlobalVariable/GlobalContext';
 
 // Registrar los componentes que vas a usar
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -9,10 +10,11 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const LineChart = () => {
 
   const [week, setWeek] = useState([]);
+  const { url } = useContext(GlobalContext);
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch("http://127.0.0.1:8080/llamada/llamadasPorDia")
+    fetch(`http://${url}/llamada/llamadasPorDia`)
     .then((response) => response.json())
     .then((data) => {
       setWeek(data);

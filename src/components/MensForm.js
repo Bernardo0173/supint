@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import GlobalContext from './GlobalVariable/GlobalContext';
 
 function MensForm() {
   const [titulo, setTitulo] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const {url} = useContext(GlobalContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch('http://127.0.0.1:8080/notificacion/crearNotificacionEsGlobal', {
+    fetch(`http://${url}/notificacion/crearNotificacionEsGlobal`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

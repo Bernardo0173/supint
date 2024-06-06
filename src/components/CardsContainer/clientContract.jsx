@@ -3,11 +3,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../styles/callCard.css";
 import { FaDatabase } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 const ClientContract = (props) => {
 
   const [paquetes, setPaquetes] = useState([]);
+  const { url } = useContext(GlobalContext);
 
   useEffect(() => {
     fetch("http://127.0.0.1:8080/cliente/paquetesPorCliente/" + props.celular)

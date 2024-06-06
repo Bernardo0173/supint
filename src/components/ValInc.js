@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import GlobalContext from "./GlobalVariable/GlobalContext";
+import { toast } from "react-hot-toast";
 
 function ValInc(props) {
   const [message, setMessage] = useState("");
   const [buttonText, setButtonText] = useState("Enviar");
+  const { url } = useContext(GlobalContext);
+
 
   const handleSend = async () => {
     setButtonText("Enviando...");
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8080/cliente/telefonoPorZona/${props.zona}`
+        `http://${url}/cliente/telefonoPorZona/${props.zona}`
       );
       if (!response.ok) {
         throw new Error(`Error fetching phone numbers: ${response.statusText}`);
@@ -24,7 +28,7 @@ function ValInc(props) {
         console.log(element.Celular);
         try {
           const response = await fetch(
-            `http://127.0.0.1:8080/sns/send-message`,
+            `http://${url}/sns/send-message`,
             {
               method: "POST",
               headers: {
@@ -46,6 +50,8 @@ function ValInc(props) {
     } catch (error) {
       console.error("Error fetching phone numbers:", error);
     } finally {
+      toast.success("Mensaje enviado correctamente");
+      setMessage("");
       setButtonText("Enviar");
     }
   };

@@ -1,14 +1,16 @@
 import "../../styles/chatbox.css";
 import Message from "./Message";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 const Chatbox = (props) => {
 
   const [messages, setMessages] = useState([]);
+  const { url } = useContext(GlobalContext);
 
   useEffect(() => {
     const fetchMessages = () => {
-      fetch(`http://127.0.0.1:8080/connect/sentiment/${props.id}`)
+      fetch(`http://${url}/connect/sentiment/${props.id}`)
         .then((response) => response.json())
         .then((data) => setMessages(data))
         .catch((error) => console.error("Error fetching data:", error));

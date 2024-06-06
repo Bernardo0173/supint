@@ -6,15 +6,17 @@ import CallCard from "./CardsContainer/CallCard";
 //import Container from 'react-bootstrap/Container';
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import GlobalContext from "./GlobalVariable/GlobalContext";
 
-const socket = io("http://127.0.0.1:8080");
+const socket = io("http://44.209.22.101:8080");
 
 const CardsContainer = () => {
+  const { url } = React.useContext(GlobalContext);
   const [calls, setCalls] = useState([]);
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch("http://127.0.0.1:8080/llamada/infoTarjetasV2")
+    fetch(`http://127.0.0.1:8080/llamada/infoTarjetasV2`)
       .then((response) => response.json())
       .then((data) => setCalls(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -43,21 +45,41 @@ const CardsContainer = () => {
       <Row lg={3} md={1} sm={1} xs={1}>
         {calls.map((call, index) => (
           <Col key={call.Sentiment} className="hola">
-            <CallCard
-              initialCallStatus={emotions[call.Sentiment]}
-              asunto={call.Asunto}
-              notas={call.Notas}
-              nombreCliente={call.CName + " " + call.CLastName}
-              nombreAgente={call.Nombre + " " + call.ApellidoP}
-              id={call.IdLlamada}
-              zona={call.ZoneName}
-              fecha={call.Fecha}
-              paquete={call.PName}
-              precio={call.Precio}
-              numLlamadas={call.numLlamadas}
-              celular={call.Celular}
-              idEmpleado={call.IdEmpleado}
-            />
+            {call.Estado ? (
+              <CallCard
+                initialCallStatus={emotions[call.Sentiment]}
+                asunto={call.Asunto}
+                notas={call.Notas}
+                nombreCliente={call.CName + " " + call.CLastName}
+                nombreAgente={call.Nombre + " " + call.ApellidoP}
+                id={call.IdLlamada}
+                zona={call.ZoneName}
+                fecha={call.Fecha}
+                paquete={call.PName}
+                precio={call.Precio}
+                numLlamadas={call.numLlamadas}
+                celular={call.Celular}
+                idEmpleado={call.IdEmpleado}
+                estado={call.Estado}
+              />
+            ) : (
+              <CallCard
+                initialCallStatus={emotions[call.Sentiment]}
+                asunto="-"
+                notas="-"
+                nombreCliente="-"
+                nombreAgente={call.Nombre + " " + call.ApellidoP}
+                id="-"
+                zona="-"
+                fecha="00-00-0000T00:00:00"
+                paquete="-"
+                precio="-"
+                numLlamadas={call.numLlamadas}
+                celular="-"
+                idEmpleado="-"
+                estado= {call.Estado}
+              />
+            )}{" "}
           </Col>
         ))}
       </Row>
