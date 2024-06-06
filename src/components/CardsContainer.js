@@ -16,7 +16,7 @@ const CardsContainer = () => {
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch(`http://127.0.0.1:8080/llamada/infoTarjetasV2`)
+    fetch(`http://${url}/llamada/infoTarjetasV2`)
       .then((response) => response.json())
       .then((data) => setCalls(data))
       .catch((error) => console.error("Error fetching data:", error));

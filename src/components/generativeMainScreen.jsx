@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useContext } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import "bootstrap/dist/css/bootstrap.min.css";
 import Stats from "./Stats";
@@ -6,15 +6,18 @@ import NotificationsOffCanvas from "./NotificationsOffCanvas";
 import ValInc from "./ValInc";
 import ButPopMens from "./ButPopMens";
 import MoreInfo from "./MoreInfo";
+import GlobalContext from "./GlobalVariable/GlobalContext";
 
 const generativeMainScreen = () => {
   const [agenteNuevo, setAgenteNuevo] = useState([]);
+  const { url } = useContext(GlobalContext);
+
   const [agentUrl, setAgentUrl] = useState(
-    "http://127.0.0.1:8080/llamada/llamadasAgentes"
+    `http://${url}/llamada/llamadasAgentes`
   );
   const [nuevaIncidencia, setNuevaIncidencia] = useState([]);
   const [incidenciaUrl, setIncidenciaUrl] = useState(
-    "http://127.0.0.1:8080/llamada/incidenciaoalgo"
+    `http://${url}/llamada/incidenciaoalgo`
   );
 
   const agentColor = (state) => {

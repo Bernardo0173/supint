@@ -18,7 +18,7 @@ const Chatbox = (props) => {
 
     fetchMessages();
 
-    const intervalId = setInterval(fetchMessages, 2500  );
+    const intervalId = setInterval(fetchMessages, 2500);
 
     return () => clearInterval(intervalId);
   }, []);

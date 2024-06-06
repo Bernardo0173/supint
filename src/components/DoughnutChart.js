@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import GlobalContext from './GlobalVariable/GlobalContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -9,9 +10,10 @@ const DoughnutChart = () => {
 
   const [activos, setActivos] = useState(0);
   const [inactivos, setInactivos] = useState(0);
+  const { url } = useContext(GlobalContext);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8080/llamada/llamadasArribaDelTiempo/60`)
+    fetch(`http://${url}/llamada/llamadasArribaDelTiempo/60`)
       .then((response) => response.json())
       .then((data) => {
         setActivos(data[0].ArribaDelTiempo);
