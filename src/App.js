@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   const [url, _] = useState("44.209.22.101:8080");
+  //const [url, _] = useState("127.0.0.1:8080");
 
   return (
     <GlobalContext.Provider value={{ url }}>

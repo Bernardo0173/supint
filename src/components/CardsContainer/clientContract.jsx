@@ -12,7 +12,7 @@ const ClientContract = (props) => {
   const { url } = useContext(GlobalContext);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8080/cliente/paquetesPorCliente/" + props.celular)
+    fetch(`http://${url}/cliente/paquetesPorCliente/${props.celular}`)
       .then((response) => response.json())
       .then((data) => setPaquetes(data))
       .catch((error) => console.error("Error fetching data:", error));
