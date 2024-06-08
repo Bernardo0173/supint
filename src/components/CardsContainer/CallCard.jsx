@@ -39,6 +39,7 @@ function CallCard(props) {
   const [seconds, setSeconds] = useState(initialTime);
   const { url } = useContext(GlobalContext);
   const [emergencyId, setEmergencyId] = useState("");
+  const [isEmergency, setIsEmergency] = useState(false);
   const [Icon, setIcon] = useState(<PiCellSignalSlashBold size={70} color="black" />);
 
   const emotions = {
@@ -90,8 +91,10 @@ function CallCard(props) {
         .then(response => response.json())
         .then(data => {
           if (data.Sentiment !== undefined) {
-            setCallStatus(emotions[data.Sentiment]);
-            console.log(callStatus);
+            if (isEmergency === false) {
+              setCallStatus(emotions[data.Sentiment]);
+              console.log(callStatus);
+            }
           }
         })
         .then(() => console.log('Call status:', callStatus))

@@ -4,17 +4,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalContext from "./components/GlobalVariable/GlobalContext";
 import React, { useState } from "react";
 import { Toaster } from "react-hot-toast";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Importa BrowserRouter
+import Login from "./components/LogIn/Login";
+import { useLogInContext } from "./components/GlobalVariable/LogInContext";
 
 function App() {
+
+  const [agent,] = useLogInContext();
   const [url, _] = useState("44.209.22.101:8080");
   //const [url, _] = useState("127.0.0.1:8080");
 
   return (
     <GlobalContext.Provider value={{ url }}>
-      <div className="App">
-        <Toaster position="top-left" reverseOrder={true} />
-        <MainScreen />
-      </div>
+      <Toaster position="top-left" reverseOrder={true} />
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/window" element={<MainScreen />} />
+          </Routes>
+        </div>
+      </Router>
     </GlobalContext.Provider>
   );
 }

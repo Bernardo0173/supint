@@ -26,6 +26,7 @@ const CardsContainer = () => {
       console.log("newCall received:", llamadas);
       setCalls([]);
       setCalls(llamadas);
+      setCalls(llamadas);
     });
 
     // Limpiar el socket al desmontar el componente

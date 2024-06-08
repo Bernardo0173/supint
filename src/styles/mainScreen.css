@@ -9,6 +9,11 @@
 .left-panel {
   flex: 1;
   overflow-y: scroll;
+  -ms-overflow-style: none;  
+ }
+  
+.left-panel::-webkit-scrollbar {
+  display: none;
 }
 
 .right-panel {

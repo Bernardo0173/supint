@@ -3,7 +3,7 @@ import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la
 import "bootstrap/dist/css/bootstrap.min.css";
 import Stats from "./Stats";
 import NotificationsOffCanvas from "./NotificationsOffCanvas";
-import ValInc from "./ValInc";
+import ValInc from "./Panel_Incidencias/ValInc";
 import ButPopMens from "./ButPopMens";
 import MoreInfo from "./MoreInfo";
 import GlobalContext from "./GlobalVariable/GlobalContext";
