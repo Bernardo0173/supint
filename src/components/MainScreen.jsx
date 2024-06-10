@@ -7,7 +7,7 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Header from "./Header/Header";
 import GrafCard from "./Graficas/GrafCard";
 import PanelInc from "./Panel_Incidencias/PanelInc";
-import CardsContainer from "./CardsContainer";
+import CardsContainer from "./CardsContainer/CardsContainer";
 
 
 const MainScreen = () => {

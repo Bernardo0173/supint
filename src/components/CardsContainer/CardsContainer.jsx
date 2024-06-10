@@ -1,12 +1,11 @@
-import "../styles/mainScreen.css";
-import "../styles/emotionalStyles.css";
+import "../../styles/mainScreen.css";
+import "../../styles/emotionalStyles.css";
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import CallCard from "./CardsContainer/CallCard";
-//import Container from 'react-bootstrap/Container';
+import CallCard from "./CallCard";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import GlobalContext from "./GlobalVariable/GlobalContext";
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 const socket = io("http://44.209.22.101:8080");
 
