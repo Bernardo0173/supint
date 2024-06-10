@@ -2,7 +2,7 @@ import React from 'react';
 import { PolarArea } from 'react-chartjs-2';
 import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useEffect, useState, useContext } from 'react';	
-import GlobalContext from './GlobalVariable/GlobalContext';
+import GlobalContext from '../../GlobalVariable/GlobalContext';
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
@@ -11,10 +11,11 @@ const PolarAreaChart = () => {
   const [internet, setInternet] = useState(0);
   const [telefonia, setTelefonia] = useState(0);
   const [television, setTelevision] = useState(0);
-  const {url} = useContext(GlobalContext);
+  const {url, token} = useContext(GlobalContext);
 
   useEffect(() => {
-    fetch(`http://${url}/llamada/numPorAsunto`)
+    fetch(`http://${url}/llamada/numPorAsunto`, {
+      headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => {
         setInternet(data[0].veces);

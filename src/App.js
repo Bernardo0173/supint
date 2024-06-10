@@ -12,11 +12,12 @@ function App() {
 
   const [agent,] = useLogInContext();
   const [url, _] = useState("44.209.22.101:8080");
+  const [token, setToken] = useState("");
   //const [url, _] = useState("127.0.0.1:8080");
 
   return (
-    <GlobalContext.Provider value={{ url }}>
-      <Toaster position="top-left" reverseOrder={true} />
+    <GlobalContext.Provider value={{ url, token, setToken}}>
+      <Toaster position="bottom-right" reverseOrder={true} />
       <Router>
         <div className="App">
           <Routes>

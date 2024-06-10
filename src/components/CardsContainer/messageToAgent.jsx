@@ -2,20 +2,23 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { GrSend } from "react-icons/gr";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 const MessageToAgent = (props) => {
 
   const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
+  const { url, token} = useContext(GlobalContext);
 
   const handleSubjectChange = async () => {
   try {
-    const response = await fetch("http://127.0.0.1:8080/notificacion/crearNotificacion", {
+    const response = await fetch(`http://${url}/notificacion/crearNotificacion`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization : `Bearer ${token}`
       },
       body: JSON.stringify({
         EsGlobal: false,

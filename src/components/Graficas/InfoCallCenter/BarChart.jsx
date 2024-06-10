@@ -1,7 +1,7 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import { useState, useEffect, useContext } from "react";
-import GlobalContext from "./GlobalVariable/GlobalContext";
+import GlobalContext from "../../GlobalVariable/GlobalContext";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,11 +24,12 @@ ChartJS.register(
 const BarChart = () => {
   const [names, setNames] = useState([]);
   const [values, setValues] = useState([]);
-  const { url } = useContext(GlobalContext);
+  const { url, token } = useContext(GlobalContext);
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch(`http://${url}/llamada/top4Agentes`)
+    fetch(`http://${url}/llamada/top4Agentes`, {
+      headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => {
         setNames(data.map((item) => item.Nombre + " " + item.ApellidoP));

@@ -12,11 +12,12 @@ const socket = io("http://44.209.22.101");
 const PanelInc = ({ increment }) => {
 
 	const [inc, setInc] = useState([]);
-  const { url } = useContext(GlobalContext);
+  const { url, token } = useContext(GlobalContext);
 
 	useEffect(() => {
     //fetch("http://44.209.22.101:8080/llamada/infoIncidencias")
-    fetch(`http://${url}/llamada/infoIncidencias`)
+    fetch(`http://${url}/llamada/infoIncidencias`, {
+      headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => setInc(data));
 

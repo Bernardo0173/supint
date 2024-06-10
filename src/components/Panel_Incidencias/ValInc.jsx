@@ -8,16 +8,15 @@ import { toast } from "react-hot-toast";
 function ValInc(props) {
   const [message, setMessage] = useState("");
   const [buttonText, setButtonText] = useState("Enviar");
-  const { url } = useContext(GlobalContext);
+  const { url, token } = useContext(GlobalContext);
 
 
   const handleSend = async () => {
     setButtonText("Enviando...");
 
     try {
-      const response = await fetch(
-        `http://${url}/cliente/telefonoPorZona/${props.zona}`
-      );
+      const response = await fetch(`http://${url}/cliente/telefonoPorZona/${props.zona}`, {
+        headers: { Authorization: `Bearer ${token}`}});
       if (!response.ok) {
         throw new Error(`Error fetching phone numbers: ${response.statusText}`);
       }
@@ -33,6 +32,7 @@ function ValInc(props) {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
               },
               body: JSON.stringify({
                 phoneNumber: element.Celular,

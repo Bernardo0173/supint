@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/grafs.css';
-import InfoLlamadas from "./InfoLlamadas";
-import InfoCC from "./InfoCC";
-import InfoCirculo from "./InfoCirculo";
-import GlobalContext from "./GlobalVariable/GlobalContext";
+import '../../styles/grafs.css';
+import InfoLlamadas from "./InfoLlamadas/InfoLlamadas";
+import InfoCC from "./InfoCallCenter/InfoCC";
+import InfoCirculo from "./InfoCirculo/InfoCirculo";
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 export default function Grafs() {
   const [llamadasDeHoy, setLlamadasDeHoy] = useState(0);
   const [activeChart, setActiveChart] = useState(0);
-  const { url } = useContext(GlobalContext)
+  const { url, token } = useContext(GlobalContext)
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch(`http://${url}/llamada/llamadasDeHoy`)
+    fetch(`http://${url}/llamada/llamadasDeHoy`, {
+      headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => setLlamadasDeHoy(data))
       .catch((error) => console.error("Error fetching data:", error));

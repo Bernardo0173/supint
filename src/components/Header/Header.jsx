@@ -6,11 +6,11 @@ import Button from "react-bootstrap/Button";
 import SugPers from "./SugPers";
 import MensForm from "./MensForm"; // Actualizado el nombre del componente
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/notificationsOffCanvas.css";
-import "../styles/header.css"; // Asegúrate de tener este archivo CSS
-import izziLogo from "../elements/izziN.png";
-import cartaIcon from "../elements/card-text.svg"; // Asegúrate de tener esta imagen en la carpeta correcta
-import GlobalContext from "./GlobalVariable/GlobalContext";
+import "../../styles/notificationsOffCanvas.css";
+import "../../styles/header.css"; // Asegúrate de tener este archivo CSS
+import izziLogo from "../../elements/izziN.png";
+import cartaIcon from "../../elements/card-text.svg"; // Asegúrate de tener esta imagen en la carpeta correcta
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 const initialNotifications = [
   {
@@ -31,7 +31,7 @@ function Header() {
   const [agentesInactivos, setAgectesInactivos] = useState(0);
   const [emocionesNegativas, setEmocionesNegativas] = useState(0);
   const [tiempoLlamada, setTiempoLlamada] = useState(0);
-  const { url } = useContext(GlobalContext);
+  const { url, token } = useContext(GlobalContext);
  
   useEffect(() => {
     const fetchApiData = () => {
@@ -44,9 +44,12 @@ function Header() {
       ];
 
       Promise.all(
-        urls.map((url) => fetch(url).then((response) => response.json()))
+        urls.map((url) => fetch(url, {headers: { Authorization: `Bearer ${token}`}}).then((response) => response.json()))
       )
         .then((dataArray) => {
+
+          console.log(dataArray);
+
           setTiempoLlamada(dataArray[0][0].averageDuration);
           setEmocionesNegativas(dataArray[1][0].count);
           setAgectesInactivos(dataArray[2][0].Inactivos);

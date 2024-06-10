@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 import giphy from "../../elements/pinkdots.gif";
 import logo from "../../elements/izziN.png";
 import { useLogInContext } from "../GlobalVariable/LogInContext";
+import GlobalContext from "../GlobalVariable/GlobalContext";
 
 const Login = () => {
 
@@ -17,6 +18,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorAut, setErrorAut] = useState(false);
+
+  const { url, token, setToken } = useContext(GlobalContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -54,16 +57,17 @@ const Login = () => {
         body: JSON.stringify(datos)
       }
       // let res = await fetch("http://localhost:8080/auth/signin", config)
-      let res = await fetch("http://44.209.22.101:8080/auth/signin", config)
+      let res = await fetch(`http://${url}/auth/signin`, config)
 
       if (!res.ok) {
         setErrorAut(true)
         throw new Error('La solicitud no pudo completarse con éxito');
-        
       }
 
       const data = await res.json();
       console.log(data)
+      setToken(data.token.AccessToken);
+
       agentData({IdEmpleado: data.user.IdEmpleado, Nombre: data.user.Nombre, ApellidoP: data.user.ApellidoP, ApellidoM: data.user.ApellidoM});
       navigate("/window");
     } catch (error) {

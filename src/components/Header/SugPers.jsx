@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Button from 'react-bootstrap/Button';
-import '../styles/sugPers.css'; // Asegúrate de tener este archivo CSS
+import '../../styles/sugPers.css'; // Asegúrate de tener este archivo CSS
 
 function SugPers({ isOpen, title, content, actions, onDelete }) {
   const [isExpanded, setIsExpanded] = useState(false);

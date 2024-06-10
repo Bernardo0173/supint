@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import GlobalContext from './GlobalVariable/GlobalContext';
+import GlobalContext from '../GlobalVariable/GlobalContext';
 
 function MensForm() {
   const [titulo, setTitulo] = useState('');
   const [mensaje, setMensaje] = useState('');
-  const {url} = useContext(GlobalContext);
+  const {url, token} = useContext(GlobalContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,6 +16,7 @@ function MensForm() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ 
         Titulo: titulo, 

@@ -2,13 +2,10 @@ import "../styles/emotionalStyles.css";
 import React, { useState } from "react";
 import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import Accordion from 'react-bootstrap/Accordion';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-//import ValInc from './Panel_Incidencias/ValInc';
-import Header from "./Header";
-//import Redesign from "./Redesign";
-import GrafCard from "./GrafCard";
+import Header from "./Header/Header";
+import GrafCard from "./Graficas/GrafCard";
 import PanelInc from "./Panel_Incidencias/PanelInc";
 import CardsContainer from "./CardsContainer";
 

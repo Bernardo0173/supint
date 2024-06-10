@@ -9,10 +9,11 @@ import GlobalContext from "../GlobalVariable/GlobalContext";
 const ClientContract = (props) => {
 
   const [paquetes, setPaquetes] = useState([]);
-  const { url } = useContext(GlobalContext);
+  const { url, token} = useContext(GlobalContext);
 
   useEffect(() => {
-    fetch(`http://${url}/cliente/paquetesPorCliente/${props.celular}`)
+    fetch(`http://${url}/cliente/paquetesPorCliente/${props.celular}`, {
+      headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => setPaquetes(data))
       .catch((error) => console.error("Error fetching data:", error));

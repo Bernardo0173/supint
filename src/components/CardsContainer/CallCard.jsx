@@ -37,7 +37,7 @@ function CallCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [seconds, setSeconds] = useState(initialTime);
-  const { url } = useContext(GlobalContext);
+  const { url, token} = useContext(GlobalContext);
   const [emergencyId, setEmergencyId] = useState("");
   const [isEmergency, setIsEmergency] = useState(false);
   const [Icon, setIcon] = useState(<PiCellSignalSlashBold size={70} color="black" />);
@@ -54,15 +54,6 @@ function CallCard(props) {
       setSeconds(seconds => seconds + 1);
     }, 1000);
 
-    // const interval2 = setInterval(() => {
-    //   fetch(`http://${url}/llamada/obtenerSentimiento/${props.id}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       setCallStatus(emotions[data.Sentiment]);
-    //       console.log(callStatus);
-    //     })
-    //     .catch(error => console.error('Error:', error));
-    // }, 5000);
 
     if (emergencyId === props.id) {
       setIcon(<RiZzzFill size={70} color="black" />);
@@ -87,11 +78,12 @@ function CallCard(props) {
     }
 
     const interval2 = setInterval(() => {
-      fetch(`http://${url}/llamada/obtenerSentimiento/${props.id}`)
+      fetch(`http://${url}/llamada/obtenerSentimiento/${props.id}`, {
+        headers: { Authorization: `Bearer ${token}`}})
         .then(response => response.json())
         .then(data => {
           if (data.Sentiment !== undefined) {
-            if (isEmergency === false) {
+            if (isEmergency == false) {
               setCallStatus(emotions[data.Sentiment]);
               console.log(callStatus);
             }
@@ -105,6 +97,7 @@ function CallCard(props) {
       if (sentiment !== undefined) {
         console.log("sentiment", sentiment);
         setCallStatus(emotions[sentiment]);
+        setIsEmergency(true);
       }
 
     })
@@ -116,8 +109,8 @@ function CallCard(props) {
       if (pr.id === props.id) {
         setCallStatus("danger");
         setIcon(<IoWarningOutline size={70} color="black" />);
-
-        toast.error(`¡Urgente! ${pr.nombre} ${pr.apellido} necesita ayuda inmediata en la llamada ${pr.id}.`, {
+        setIsEmergency(true);
+        toast.error(`¡Urgente! ${pr.nombre} ${pr.apellido} necesita ayuda inmediata en su llamada.`, {
           duration: 5000,
           position: "top-left",
           style: {

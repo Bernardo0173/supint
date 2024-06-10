@@ -11,12 +11,13 @@ import GlobalContext from "./GlobalVariable/GlobalContext";
 const socket = io("http://44.209.22.101:8080");
 
 const CardsContainer = () => {
-  const { url } = React.useContext(GlobalContext);
+  const { url, token} = React.useContext(GlobalContext);
   const [calls, setCalls] = useState([]);
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch(`http://${url}/llamada/infoTarjetasV2`)
+    fetch(`http://${url}/llamada/infoTarjetasV2`, {
+      headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => setCalls(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -24,14 +25,12 @@ const CardsContainer = () => {
     // Configurar el socket para escuchar eventos
     socket.on("newPage", (llamadas) => {
       console.log("newCall received:", llamadas);
-      setCalls([]);
-      setCalls(llamadas);
       setCalls(llamadas);
     });
 
     // Limpiar el socket al desmontar el componente
     return () => {
-      socket.off("newCall");
+      socket.off("newPage");
     };
   }, []);
 
