@@ -14,6 +14,7 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
     "lightweight-charts": "^4.1.4",
+    "moment-timezone": "^0.5.45",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-chartjs-2": "^5.2.0",

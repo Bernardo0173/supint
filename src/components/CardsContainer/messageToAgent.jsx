@@ -5,30 +5,32 @@ import { GrSend } from "react-icons/gr";
 import { useState, useContext } from "react";
 import axios from "axios";
 import GlobalContext from "../GlobalVariable/GlobalContext";
+import moment from 'moment-timezone';
+import { toast } from "react-hot-toast";
 
 const MessageToAgent = (props) => {
 
   const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
   const { url, token} = useContext(GlobalContext);
+  const date = moment().tz("America/Mexico_City").format();
 
   const handleSubjectChange = async () => {
   try {
-    const response = await fetch(`http://${url}/notificacion/crearNotificacion`, {
+    const response = await fetch(`http://${url}/notificacion/crearNotificacionAgentes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization : `Bearer ${token}`
       },
       body: JSON.stringify({
-        EsGlobal: false,
-        FechaHora: new Date().toISOString(),
+        FechaHora: date,
         Titulo: subject,
         Descripcion: content,
         IdEmpleado: props.id
       }),
     });
-
+    console.log(date);
     console.log(response);
 
     if (!response.ok) {
@@ -37,9 +39,11 @@ const MessageToAgent = (props) => {
 
     setSubject('');
     setContent('');
+    toast.success("Mensaje enviado correctamente");
 
   } catch (error) {
     console.error("Error setting subject:", error);
+    toast.error("Error al enviar el mensaje");
   }
 };
 

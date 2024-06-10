@@ -24,7 +24,7 @@ const CardsContainer = () => {
     // Configurar el socket para escuchar eventos
     socket.on("newPage", (llamadas) => {
       console.log("newCall received:", llamadas);
-      setCalls(llamadas);
+      setCalls(prevCalls => llamadas);
     });
 
     // Limpiar el socket al desmontar el componente
