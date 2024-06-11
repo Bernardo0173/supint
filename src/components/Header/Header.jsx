@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "react-bootstrap/Button";
+import { Container, Navbar, Offcanvas, Button } from "react-bootstrap";
 import SugPers from "./SugPers";
 import MensForm from "./MensForm"; // Actualizado el nombre del componente
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -91,10 +88,11 @@ function Header() {
         <Container fluid>
           <Navbar.Brand href="#">
             <img
+            
               src={izziLogo}
               alt="Izzi"
               height="45"
-              className="d-inline-block align-top"
+              className="izzilogo"
             />
           </Navbar.Brand>
           <Navbar.Toggle
