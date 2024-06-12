@@ -44,7 +44,7 @@ const CardsContainer = () => {
     <div className="left-panel">
       <Row lg={3} md={1} sm={1} xs={1}>
         {calls.map((call, index) => (
-          <Col key={call.Sentiment} className="hola">
+          <Col key={call.Sentiment} className="cardmargin">
             {call.Estado ? (
               <CallCard
                 initialCallStatus={emotions[call.Sentiment]}

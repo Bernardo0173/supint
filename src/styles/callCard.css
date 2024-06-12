@@ -1,87 +1,148 @@
+.bg-success {
+  background-color: #00bcb4 !important;
+  border-color: #00bcb4 !important;
+}
+
+.bg-danger {
+  background-color: #ec6907 !important;
+  border-color: #ec6907 !important;
+}
+
+.bg-warning {
+  background-color: #ffec00 !important;
+  border-color: #ffec00 !important;
+}
+.bg-info {
+  background-color: #92b0b4 !important;
+  border-color: #92b0b4;
+}
+
+.btn-success {
+  background-color: #00bcb4;
+  border-color: #00bcb4;
+}
+
+.btn-danger {
+  background-color: #ec6907;
+  border-color: #ec6907;
+}
+.btn-warning {
+  background-color: #ffec00;
+  border-color: #ffec00;
+}
+
+.btn-info {
+  background-color: #92b0b4 !important;
+  border-color: #92b0b4;
+}
+
 .callStatus {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.contract-content-card {
-    border: none;
-    background-color: #f8f9fa;
-    width: 220px;
-    height: 90px;
-    padding: 7px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.contract-icon-container {
-    background-color: #28a745;
-    border-radius: 50%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-}
-
-.icon {
-    color: white;
-    font-size: 24px;
-}
-
-.contract-text-container {
-    flex-grow: 1;
-}
-
-.contract-card-title {
-    margin-bottom: 0;
-    font-size: 13px;
-    color: #495057;
-}
-
-.contract-card-text {
-    margin: 0;
-    font-size: 10px;
-    font-weight: bold;
-    color: #343a40;
-}
-
-.kpi-card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .callTimer {
-    position: absolute;
-    top: 50%;
-    left: 29%;
-    transform: translate(-50%, -50%);
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background-color: #83e486;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.9rem;  
-    border: white 5px solid;
+  position: absolute;
+  top: 50%;
+  left: 29%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #83e486;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  border: white 5px solid;
 }
 
 .callIssue {
-    font-size: 1rem;
-    display: flex;
+  font-size: 1rem;
+  display: flex;
 }
 
-.cool{
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+.contract-content-card {
+  border: none;
+  background-color: #f8f9fa;
+  width: 220px;
+  height: 90px;
+  padding: 7px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.hola {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.contract-icon-container {
+  background-color: #28a745;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
 }
+
+.contract-text-container {
+  flex-grow: 1;
+}
+
+.contract-card-title {
+  margin-bottom: 0;
+  font-size: 13px;
+  color: #495057;
+}
+
+.contract-card-text {
+  margin: 0;
+  font-size: 10px;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.icon {
+  color: white;
+  font-size: 24px;
+}
+
+.kpi-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardmargin {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.descripcion {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.nombreAgente {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.nombreCliente {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.fixed-height-card {
+  height: 212px;
+}
+
+
+.fixed-height-card .card-body {
+    height: 125px;
+    overflow-y: hidden;
+  }
+.fixed-height-card .card-footer {
+    height: 85px;
+  }
