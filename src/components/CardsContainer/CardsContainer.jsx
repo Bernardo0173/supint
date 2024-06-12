@@ -10,13 +10,15 @@ import GlobalContext from "../GlobalVariable/GlobalContext";
 const socket = io("http://44.209.22.101:8080");
 
 const CardsContainer = () => {
-  const { url, token} = React.useContext(GlobalContext);
+  const { url, token } = React.useContext(GlobalContext);
   const [calls, setCalls] = useState([]);
+
 
   useEffect(() => {
     // Inicialmente cargar datos
     fetch(`http://${url}/llamada/infoTarjetasV2`, {
-      headers: { Authorization: `Bearer ${token}`}})
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => setCalls(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -24,7 +26,27 @@ const CardsContainer = () => {
     // Configurar el socket para escuchar eventos
     socket.on("newPage", (llamadas) => {
       console.log("newCall received:", llamadas);
-      setCalls(prevCalls => llamadas);
+      setCalls(prevCalls => {
+        // Crear un nuevo array que contenga los elementos de prevCalls
+        const newCalls = [...prevCalls];
+
+        // Iterar sobre las nuevas llamadas
+        for (const call of llamadas) {
+          // Buscar el índice de la llamada existente
+          const existingCallIndex = newCalls.findIndex(c => c.Nombre === call.Nombre);
+
+          if (existingCallIndex !== -1) {
+            // Si la llamada existe, reemplazarla con la nueva
+            newCalls[existingCallIndex] = call;
+          } else {
+            // Si la llamada no existe, agregarla al array
+            newCalls.push(call);
+          }
+        }
+
+        // Devolver el nuevo array
+        return newCalls;
+      });
     });
 
     // Limpiar el socket al desmontar el componente
@@ -44,7 +66,7 @@ const CardsContainer = () => {
     <div className="left-panel">
       <Row lg={3} md={1} sm={1} xs={1}>
         {calls.map((call, index) => (
-          <Col key={call.Sentiment} className="hola">
+          <Col key={call.IdEmpleado} className="hola">
             {call.Estado ? (
               <CallCard
                 initialCallStatus={emotions[call.Sentiment]}
@@ -77,7 +99,7 @@ const CardsContainer = () => {
                 numLlamadas={call.numLlamadas}
                 celular="-"
                 idEmpleado="-"
-                estado= {call.Estado}
+                estado={call.Estado}
               />
             )}{" "}
           </Col>

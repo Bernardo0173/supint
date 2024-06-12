@@ -1,11 +1,13 @@
 // SugPers.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Button from 'react-bootstrap/Button';
 import '../../styles/sugPers.css'; // Asegúrate de tener este archivo CSS
+import GlobalContext from '../GlobalVariable/GlobalContext';
 
-function SugPers({ isOpen, title, content, actions, onDelete }) {
+function TiempoPromedio({ isOpen, title, content, actions, onDelete, openPanel }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { url, token, setToken, titleC, setTitleC, description, setDescription } = useContext(GlobalContext);
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -33,6 +35,7 @@ function SugPers({ isOpen, title, content, actions, onDelete }) {
               {actions.map((action, index) => (
                 <div key={index} className="action-item">{action}</div>
               ))}
+              <div key = "99" className='action-item' onClick={openPanel} >3. Mandar mensajes a agentes 📧</div>
             </div>
           </CSSTransition>
         </div>
@@ -41,4 +44,4 @@ function SugPers({ isOpen, title, content, actions, onDelete }) {
   );
 }
 
-export default SugPers;
+export default TiempoPromedio;

@@ -85,3 +85,35 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.custom-toast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8d7da; /* Fondo rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+    padding: 16px;
+    border-left: 6px solid #f5c6cb; /* Borde rojo claro */
+    border-radius: 4px;
+    font-size: 20px; /* Asegurando el tamaño de fuente */
+  }
+  
+  .toast-content {
+    flex: 1;
+  }
+  
+  .toast-button {
+    background-color: #721c24; /* Fondo rojo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .toast-button:hover {
+    background-color: #f5c6cb; /* Fondo rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+  }
+  

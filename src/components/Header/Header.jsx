@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import SugPers from "./SugPers";
+import EmocionesNeg from "./EmocionesNeg"; 
 import MensForm from "./MensForm"; // Actualizado el nombre del componente
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/notificationsOffCanvas.css";
@@ -11,6 +12,8 @@ import "../../styles/header.css"; // Asegúrate de tener este archivo CSS
 import izziLogo from "../../elements/izziN.png";
 import cartaIcon from "../../elements/card-text.svg"; // Asegúrate de tener esta imagen en la carpeta correcta
 import GlobalContext from "../GlobalVariable/GlobalContext";
+import TiempoPromedio from "./TiempoPromedio";
+import PeoresAgentes from "./PeoresAgentes";
 
 const initialNotifications = [
   {
@@ -31,7 +34,7 @@ function Header() {
   const [agentesInactivos, setAgectesInactivos] = useState(0);
   const [emocionesNegativas, setEmocionesNegativas] = useState(0);
   const [tiempoLlamada, setTiempoLlamada] = useState(0);
-  const { url, token } = useContext(GlobalContext);
+  const { url, token, setToken, titulo, setTitulo, mensaje, setMensaje } = useContext(GlobalContext);
  
   useEffect(() => {
     const fetchApiData = () => {
@@ -79,6 +82,18 @@ function Header() {
   const handleShow = () => setShow(true);
   const handleMessageClose = () => setShowMessageCanvas(false);
   const handleMessageShow = () => setShowMessageCanvas(true);
+  const handleEmocionesNegativas = () => {
+    setShowMessageCanvas(true);
+    setTitulo("Emociones negativas");
+    setMensaje("Queridos agentes hemos notado que hay un incremento en las emociones negativas en las llamadas, por favor recordar la importancia de la empatía en el trato con los clientes. Muchas gracias");
+  };
+
+  const handleTiempoPromedio = () => {
+    setShowMessageCanvas(true);
+    setTitulo("Tiempo promedio de llamada");
+    setMensaje("Queridos agentes hemos notado que el tiempo promedio de llamada es mayor al esperado, por favor recordar la importancia de mantener un tiempo adecuado en las llamadas. Muchas gracias");
+     
+  };
 
   const handleDelete = (index) => {
     const newNotifications = notifications.filter((_, i) => i !== index);
@@ -117,7 +132,7 @@ function Header() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              {agentesInactivos < 1 ? (
+              {agentesInactivos > 1 ? (
                 <SugPers
                   key={1}
                   isOpen={true}
@@ -132,23 +147,23 @@ function Header() {
               ) : null}
 
               {emocionesNegativas > 1 ? (
-                <SugPers
+                <EmocionesNeg
                   key={2}
                   isOpen={true}
                   title={"Emociones negativas."}
                   content={`Actualmente hay ${emocionesNegativas} conversaciones con emociones negativas.`}
                   actions={[
                     "1. Verifique las llamadas",
-                    "2. Recordar a los agentes la importancia de la empatía",
-                    "3. Realizar una capacitación",
-                    "4. Realizar una encuesta",
+                    "2. Realizar una capacitación",
+                    "3. Realizar una encuesta",
                   ]}
                   onDelete={() => handleDelete(1)}
+                  openPanel = {handleEmocionesNegativas}
                 />
               ) : null}
 
               {tiempoLlamada > 1 ? (
-                <SugPers
+                <TiempoPromedio
                   key={3}
                   isOpen={true}
                   title={"Tiempo de llamada."}
@@ -157,12 +172,25 @@ function Header() {
                   }
                   actions={[
                     "1. Verificar la cantidad de agentes",
-                    "2. Checar llamadas actuales con duracion mayor a tiempo ideal.",
-                    "3. Recordar a agentes tiempo promedio / ideal.",
+                    "2. Checar llamadas actuales con duracion mayor a tiempo ideal."
                   ]}
                   onDelete={() => handleDelete(3)}
+                  openPanel = {handleTiempoPromedio}
                 />
               ) : null}
+              <PeoresAgentes
+                  key={2}
+                  isOpen={true}
+                  title={"Capacitación agentes"}
+                  content={`Hemos analizado el desempeño de tus agentes y recomendamos que los siguiente agentes tomen capacitación.`}
+                  actions={[
+                    "1. Verifique las llamadas",
+                    "2. Realizar una capacitación",
+                    "3. Realizar una encuesta",
+                  ]}
+                  onDelete={() => handleDelete(1)}
+                  openPanel = {handleEmocionesNegativas}
+                />
             </Offcanvas.Body>
           </Navbar.Offcanvas>
 

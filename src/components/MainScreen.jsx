@@ -9,7 +9,6 @@ import GrafCard from "./Graficas/GrafCard";
 import PanelInc from "./Panel_Incidencias/PanelInc";
 import CardsContainer from "./CardsContainer/CardsContainer";
 
-
 const MainScreen = () => {
 
   const initialInc = [
