@@ -26,10 +26,10 @@ const MainScreen = () => {
       <div className="right-panel ps-5 pe-4">
         <div className="button-group">
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-100">
-            <ToggleButton id="tbg-radio-1" value={1} className="tab-button">
+            <ToggleButton id="tbg-radio-1" value={1} className="tab-button" variant="light">
               Incidencias
             </ToggleButton>
-            <ToggleButton id="tbg-radio-2" value={2} className="tab-button">
+            <ToggleButton id="tbg-radio-2" value={2} className="tab-button" variant="light">
               Gráficas
             </ToggleButton>
           </ToggleButtonGroup>
