@@ -11,6 +11,8 @@ import cartaIcon from "../../elements/card-text.svg"; // Asegúrate de tener est
 import GlobalContext from "../GlobalVariable/GlobalContext";
 import TiempoPromedio from "./TiempoPromedio";
 import PeoresAgentes from "./PeoresAgentes";
+import { IoMdNotifications } from "react-icons/io";
+import { RiMessage2Line } from "react-icons/ri";
 
 const initialNotifications = [
   {
@@ -110,13 +112,20 @@ function Header() {
               className="izzilogo"
             />
           </Navbar.Brand>
+
+          <div className="ms-auto">
           <Navbar.Toggle
             aria-controls={`offcanvasNavbar-expand`}
             onClick={handleShow}
-          />
+            className="border border-0"
+          >
+            <IoMdNotifications size={30} color="#2C2C2C"/>
+          </Navbar.Toggle>
+
           <Button variant="link" onClick={handleMessageShow} className="ms-3">
-            <img src={cartaIcon} alt="Enviar mensaje" height="30" />
+            <RiMessage2Line size={30} color="#2C2C2C"/>
           </Button>
+          </div>
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand`}
             aria-labelledby={`offcanvasNavbarLabel-expand`}

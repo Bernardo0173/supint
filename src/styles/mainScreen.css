@@ -3,13 +3,14 @@
   height: 100vh;
   position: relative;
   padding-top: 56px; /* Altura del header */
-  /* Esto permite posicionar el botón y la ventana de notificaciones de forma absoluta dentro del contenedor */
+  /* Esto permite posicionar el botón y la ventana de notificaciones de forma absoluta dentro del contenedor */;
 }
 
 .left-panel {
   flex: 1;
   overflow-y: scroll;
-  padding-left: 20px;
+  padding-left: 25px;
+  padding-top: 10px;
   -ms-overflow-style: none;  
  }
   
@@ -21,13 +22,13 @@
   width: 35%;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 
 .top-buttons{
   display: flex;
   justify-content: center;
   width:400px;
-
 }
 
 
@@ -36,6 +37,8 @@
   justify-content: center;
   width: 100%;
   padding-top: 10px;
+  padding-left: 9%;
+  padding-right: 4%;
 }
 
 .tab-button {
