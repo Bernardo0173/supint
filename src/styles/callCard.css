@@ -116,4 +116,19 @@
     background-color: #f5c6cb; /* Fondo rojo claro */
     color: #721c24; /* Texto rojo oscuro */
   }
-  
+
+.bg-success {
+    background-color: #00bcb4 !important;
+}
+
+.bg-warning {
+    background-color: #ffce00 !important;
+}
+ 
+.bg-danger {
+    background-color: #d7006d !important;
+}
+
+.bg-info {
+    background-color: #b6bdbd !important;
+}

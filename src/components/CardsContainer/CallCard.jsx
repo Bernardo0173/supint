@@ -197,7 +197,7 @@ function CallCard(props) {
                     </div>
                   </Col>
                   <Col>
-                    <Button className="btn-sm text-black" onClick = {() => { handleShow(); }} variant={props.estado ? callStatus : "info"}>
+                    <Button className={`bg-${props.estado ? callStatus : 'info'} btn-sm text-black border border-0`} onClick = {() => { handleShow(); }}>
                       <BsFillTelephoneOutboundFill /> Intervenir
                     </Button>
                   </Col>

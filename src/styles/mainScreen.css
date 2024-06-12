@@ -9,10 +9,10 @@
 .left-panel {
   flex: 1;
   overflow-y: scroll;
-  padding-left: 25px;
+  padding-left: 18px;
   padding-top: 10px;
   -ms-overflow-style: none;  
- }
+}
   
 .left-panel::-webkit-scrollbar {
   display: none;
@@ -45,14 +45,7 @@
   flex: 1;
   padding: 10px 20px;
   cursor: pointer;
-  border: none;
-  background-color: #f0f0f0;
-  transition: background-color 0.3s;
   text-align: center;
-}
-
-.tab-button.active {
-  background-color: #d0d0d0;
 }
 
 .content-section {

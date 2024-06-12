@@ -5,13 +5,7 @@
   width: 100%;
   height: fit-content;
   z-index: 1000;
-  background: linear-gradient(
-    90deg,
-    rgb(255, 137, 53) 0.41%,
-    rgb(234, 168, 121) 40.68%,
-    rgb(226, 108, 163) 64.12%,
-    rgb(209, 32, 115) 97.82%
-  );
+  background: linear-gradient(to right, #d7006d, #00bcb4);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
