@@ -122,7 +122,7 @@ function CallCard(props) {
             fontSize: '20px',
             background: '#f8d7da',
           }
-        );
+        });
       }
     });
 
