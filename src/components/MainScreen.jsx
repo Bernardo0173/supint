@@ -9,7 +9,6 @@ import GrafCard from "./Graficas/GrafCard";
 import PanelInc from "./Panel_Incidencias/PanelInc";
 import CardsContainer from "./CardsContainer/CardsContainer";
 
-
 const MainScreen = () => {
 
   const initialInc = [
@@ -21,12 +20,12 @@ const MainScreen = () => {
   const [activeTab, setActiveTab] = useState("graficas");
 
   return (
-    <div className="main-container">
+    <div className="main-container mt-4">
       <Header />
       <CardsContainer />
-      <div className="right-panel">
+      <div className="right-panel ps-5 pe-4">
         <div className="button-group">
-          <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-1000">
+          <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-100">
             <ToggleButton id="tbg-radio-1" value={1} className="tab-button">
               Incidencias
             </ToggleButton>

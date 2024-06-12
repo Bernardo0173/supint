@@ -34,7 +34,7 @@
   display: flex;
 }
 
-.title {
+.title2 {
   font-size: 14px;
   font-weight: bold;
   text-align: left;
@@ -43,7 +43,7 @@
   margin-top: 20px;
 }
 
-.title-agent {
+.title2-agent {
   font-size: 14px;
   font-weight: bold;
   text-align: right;

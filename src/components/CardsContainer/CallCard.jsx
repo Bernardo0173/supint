@@ -34,7 +34,7 @@ function CallCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [seconds, setSeconds] = useState(initialTime);
-  const { url, token } = useContext(GlobalContext);
+  const { url, token  } = useContext(GlobalContext);
   const [emergencyId, setEmergencyId] = useState("");
   const [isEmergency, setIsEmergency] = useState(false);
   const [Icon, setIcon] = useState(
@@ -77,10 +77,10 @@ function CallCard(props) {
 
     const interval2 = setInterval(() => {
       fetch(`http://${url}/llamada/obtenerSentimiento/${props.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${token}` }
       })
-        .then((response) => response.json())
-        .then((data) => {
+        .then(response => response.json())
+        .then(data => {
           if (data.Sentiment !== undefined) {
             if (isEmergency === false) {
               setCallStatus(emotions[data.Sentiment]);
@@ -108,14 +108,19 @@ function CallCard(props) {
         setCallStatus("danger");
         setIcon(<IoWarningOutline size={70} color="black" />);
         setIsEmergency(true);
-        toast.error(
-          `¡Urgente! ${pr.nombre} ${pr.apellido} necesita ayuda inmediata en su llamada.`,
-          {
-            duration: 5000,
-            position: "top-left",
-            style: {
-              fontSize: "20px", // Cambia esto al tamaño de fuente que prefieras
-            },
+        toast.error((t) => (
+          <div className="custom-toast">
+            <div className="toast-content">
+              <strong>¡Urgente!</strong> {pr.nombre} {pr.apellido} necesita ayuda inmediata en su llamada.
+            </div>
+            <button className="toast-button" onClick={() => { handleShow(); }}>Abrir<br/>tarjeta</button>
+          </div>
+        ), {
+          duration: 5000,
+          position: "top-left",
+          style: {
+            fontSize: '20px',
+            background: '#f8d7da',
           }
         );
       }
@@ -202,7 +207,7 @@ function CallCard(props) {
                   </Col>
                   <Col>
                     <Button
-                      className="btn-sm text-black"
+                      className="btn-sm text-black" onClick = {() => { handleShow(); }}
                       variant={props.estado ? callStatus : "info"}
                     >
                       <BsFillTelephoneOutboundFill /> Intervenir

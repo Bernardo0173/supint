@@ -6,9 +6,7 @@ import GlobalContext from '../GlobalVariable/GlobalContext';
 import { toast } from 'react-hot-toast';
 
 function MensForm() {
-  const [titulo, setTitulo] = useState('');
-  const [mensaje, setMensaje] = useState('');
-  const {url, token} = useContext(GlobalContext);
+  const { url, token, setToken, titulo, setTitulo, mensaje, setMensaje } = useContext(GlobalContext);
   const [prueba, setPrueba] = useState('');
  
   const handleSubmit = (event) => {

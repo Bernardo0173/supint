@@ -28,7 +28,7 @@ const BarChart = () => {
 
   useEffect(() => {
     // Inicialmente cargar datos
-    fetch(`http://${url}/llamada/top4Agentes`, {
+    fetch(`http://${url}/llamada/topAgents/4`, {
       headers: { Authorization: `Bearer ${token}`}})
       .then((response) => response.json())
       .then((data) => {

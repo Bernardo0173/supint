@@ -5,7 +5,7 @@ import { CiFaceSmile, CiFaceFrown, CiFaceMeh } from "react-icons/ci";
 const Message = ({ emotion, name, time, content, title }) => {
   let icon;
   let messageClass = title === "AGENT" ? "message-agent" : "message";
-  let titleClass = title === "AGENT" ? "title-agent" : "title";
+  let titleClass = title === "AGENT" ? "title2-agent" : "title2";
 
   switch (emotion) {
     case "POSITIVE":

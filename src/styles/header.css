@@ -3,6 +3,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  height: fit-content;
   z-index: 1000;
   background: linear-gradient(
     90deg,
