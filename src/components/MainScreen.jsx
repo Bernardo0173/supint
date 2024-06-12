@@ -25,7 +25,7 @@ const MainScreen = () => {
       <CardsContainer />
       <div className="right-panel">
         <div className="button-group">
-          <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-100">
+          <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-1000">
             <ToggleButton id="tbg-radio-1" value={1} className="tab-button">
               Incidencias
             </ToggleButton>

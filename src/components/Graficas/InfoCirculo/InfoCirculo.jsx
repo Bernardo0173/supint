@@ -8,17 +8,18 @@ const InfoCirculo = () => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <ButtonGroup style={{ marginBottom: '20px' }}>
+      <ButtonGroup className="d-flex flex-row flex-md-column flex-sm-column">
         <Button
           variant="secondary"
-          className={activeChart === 0 ? 'active' : ''}
+          className="m-1"
           onClick={() => setActiveChart(0)}
         >
           Llamadas en tiempo ideal
         </Button>
         <Button
+        
           variant="secondary"
-          className={activeChart === 1 ? 'active' : ''}
+          className="m-1"
           onClick={() => setActiveChart(1)}
         >
           Problemas comunes
