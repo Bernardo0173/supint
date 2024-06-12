@@ -189,7 +189,7 @@ function CallCard(props) {
                 Descripción: {props.notas}
               </Card.Text>
             </Card.Body>
-            <Card.Footer className="fs-6">
+            <Card.Footer className="fs-6 footer">
               <Container>
                 <Row className="row justify-content-between align-items-center text-center">
                   <Col>
@@ -322,9 +322,6 @@ function CallCard(props) {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
-          </Button>
-          <Button className="btn-md text-black" variant={callStatus}>
-            <BsFillTelephoneOutboundFill /> Intervenir
           </Button>
         </Modal.Footer>
       </Modal>

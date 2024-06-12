@@ -68,13 +68,13 @@
 }
 
 .contract-content-card {
-    border: none;
-    background-color: #f8f9fa;
-    width: fit-content;
-    height: fit-content;
-    padding: 5px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  background-color: #f8f9fa;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contract-icon-container {
@@ -92,16 +92,16 @@
 }
 
 .contract-card-title {
-    margin-bottom: 0;
-    font-size: 16px;
-    color: #495057;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #495057;
 }
 
 .contract-card-text {
-    margin: 0;
-    font-size: 11px;
-    font-weight: bold;
-    color: #343a40;
+  margin: 0;
+  font-size: 11px;
+  font-weight: bold;
+  color: #343a40;
 }
 
 .icon {
@@ -135,29 +135,28 @@
 }
 
 .fixed-height-card {
-  height: 212px;
+  height: 222px;
 }
 
-
 .fixed-height-card .card-body {
-    height: 125px;
-    overflow-y: hidden;
-  }
+  height: 155px;
+  overflow-y: hidden;
+}
 .fixed-height-card .card-footer {
-    height: 85px;
-  }
+  height: 85px;
+}
 .bg-success {
-    background-color: #00bcb4 !important;
+  background-color: #00bcb4 !important;
 }
 
 .bg-warning {
-    background-color: #ffce00 !important;
+  background-color: #ffce00 !important;
 }
- 
+
 .bg-danger {
-    background-color: #d7006d !important;
+  background-color: #d7006d !important;
 }
 
 .bg-info {
-    background-color: #b6bdbd !important;
+  background-color: #b6bdbd !important;
 }
