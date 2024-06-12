@@ -1,10 +1,4 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Nav from "react-bootstrap/Nav";
+import { Button, Card, Col, Container, Modal, Nav, Row } from "react-bootstrap";
 //import Sentiment from "./sentiment";
 import ClientContracts from "./clientContract";
 import AgentKpis from "./agentKpis";
@@ -15,7 +9,11 @@ import {
   BsPersonFillCheck,
   BsFillTelephoneOutboundFill,
 } from "react-icons/bs";
-import { PiCellSignalSlashBold, PiPhoneX, PiTelevisionThin } from "react-icons/pi";
+import {
+  PiCellSignalSlashBold,
+  PiPhoneX,
+  PiTelevisionThin,
+} from "react-icons/pi";
 import { IoWarningOutline } from "react-icons/io5";
 import { RiZzzFill } from "react-icons/ri";
 import { useState, useEffect, useContext } from "react";
@@ -28,7 +26,6 @@ const socket2 = io("http://127.0.0.1:8080");
 const socket = io("http://44.209.22.101:8080");
 
 function CallCard(props) {
-
   // Show modal containing call details
   const initialTime = Math.floor(Math.random() * 60);
 
@@ -37,10 +34,12 @@ function CallCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [seconds, setSeconds] = useState(initialTime);
-  const { url, token } = useContext(GlobalContext);
+  const { url, token  } = useContext(GlobalContext);
   const [emergencyId, setEmergencyId] = useState("");
   const [isEmergency, setIsEmergency] = useState(false);
-  const [Icon, setIcon] = useState(<PiCellSignalSlashBold size={70} color="black" />);
+  const [Icon, setIcon] = useState(
+    <PiCellSignalSlashBold size={70} color="black" />
+  );
 
   const emotions = {
     positive: "success",
@@ -51,9 +50,8 @@ function CallCard(props) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(seconds => seconds + 1);
+      setSeconds((seconds) => seconds + 1);
     }, 1000);
-
 
     if (emergencyId === props.id) {
       setIcon(<RiZzzFill size={70} color="black" />);
@@ -63,13 +61,13 @@ function CallCard(props) {
       setIcon(<RiZzzFill size={70} color="black" />);
     } else {
       switch (props.asunto) {
-        case 'internet':
+        case "internet":
           setIcon(<PiCellSignalSlashBold size={70} color="black" />);
           break;
-        case 'telefonia':
+        case "telefonia":
           setIcon(<PiPhoneX size={70} color="black" />);
           break;
-        case 'television':
+        case "television":
           setIcon(<PiTelevisionThin size={70} color="black" />);
           break;
         default:
@@ -84,14 +82,14 @@ function CallCard(props) {
         .then(response => response.json())
         .then(data => {
           if (data.Sentiment !== undefined) {
-            if (isEmergency == false) {
+            if (isEmergency === false) {
               setCallStatus(emotions[data.Sentiment]);
               console.log(callStatus);
             }
           }
         })
-        .then(() => console.log('Call status:', callStatus))
-        .catch(error => console.error('Error:', error));
+        .then(() => console.log("Call status:", callStatus))
+        .catch((error) => console.error("Error:", error));
     }, 2500);
 
     socket.on("sentiment", ({ sentiment }) => {
@@ -100,8 +98,7 @@ function CallCard(props) {
         setCallStatus(emotions[sentiment]);
         setIsEmergency(true);
       }
-
-    })
+    });
 
     socket.on("EMERGENCIA", (pr) => {
       console.log("EMERGENCIA", pr);
@@ -125,10 +122,9 @@ function CallCard(props) {
             fontSize: '20px',
             background: '#f8d7da',
           }
-        });
-
+        );
       }
-    })
+    });
 
     return () => {
       clearInterval(interval);
@@ -137,7 +133,7 @@ function CallCard(props) {
       socket.off("sentiment");
       socket2.off("sentiment");
       clearInterval(interval2);
-    }
+    };
     // Esto limpia el intervalo cuando el componente se desmonta
   }, [props.estado, props.asunto, emergencyId]);
 
@@ -151,7 +147,13 @@ function CallCard(props) {
   const renderContent = () => {
     switch (activeTab) {
       case "liveCall":
-        return <Chat nombreCliente={props.nombreCliente} nombreAgente={props.nombreAgente} id={props.id} />;
+        return (
+          <Chat
+            nombreCliente={props.nombreCliente}
+            nombreAgente={props.nombreAgente}
+            id={props.id}
+          />
+        );
       case "contracts":
         return <ClientContracts celular={props.celular} />;
       case "msg":
@@ -163,22 +165,27 @@ function CallCard(props) {
     }
   };
 
-
   return (
     <>
       {/* Call card */}
-      <Card style={{ maxWidth: "400px", overflow: "hidden" }}>
-        <Row>
+      <Card className="fixed-height-card">
+        <Row style={{ maxWidth: "400px", overflow: "hidden" }}>
           <Col sm={3} md={3} className="pe-0" onClick={handleShow}>
-            <div className={`bg-${props.estado ? callStatus : 'info'} callStatus`}>
+            <div
+              className={`bg-${props.estado ? callStatus : "info"} callStatus`}
+            >
               {Icon}
             </div>
           </Col>
           <Col sm={9} md={9} className="ps-0">
             <Card.Body className="text-start">
-              <Card.Title className="mt-2">{props.nombreAgente}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{props.nombreCliente}</Card.Subtitle>
-              <Card.Text className="fs-6 fw-lighter">
+              <Card.Title className="mt-2 nombreAgente">
+                {props.nombreAgente}
+              </Card.Title>
+              <Card.Subtitle className="mb-2 text-muted nombreCliente">
+                {props.nombreCliente}
+              </Card.Subtitle>
+              <Card.Text className="fs-6 fw-lighter descripcion">
                 Descripción: {props.notas}
               </Card.Text>
             </Card.Body>
@@ -188,12 +195,14 @@ function CallCard(props) {
                   <Col>
                     <div>
                       <BsStopwatch /> <br />
-                      {minutes.toString().padStart(2, '0')}:{displaySeconds.toString().padStart(2, '0')}
+                      {minutes.toString().padStart(2, "0")}:
+                      {displaySeconds.toString().padStart(2, "0")}
                     </div>
                   </Col>
                   <Col>
                     <div>
-                      <BsPersonFillCheck /> <br />{props.numLlamadas}
+                      <BsPersonFillCheck /> <br />
+                      {props.numLlamadas}
                     </div>
                   </Col>
                   <Col>
@@ -220,7 +229,11 @@ function CallCard(props) {
         <Modal.Body className="px-0 py-0">
           <Card className="border-0">
             <Card.Header>
-              <Nav variant="tabs" defaultActiveKey="liveCall" onSelect={handleSelect}>
+              <Nav
+                variant="tabs"
+                defaultActiveKey="liveCall"
+                onSelect={handleSelect}
+              >
                 <Nav.Item>
                   <Nav.Link eventKey="liveCall">Llamada en vivo</Nav.Link>
                 </Nav.Item>
@@ -234,8 +247,8 @@ function CallCard(props) {
                   <Nav.Link eventKey="kpis">Desempeño del agente</Nav.Link>
                 </Nav.Item>
               </Nav>
-            </Card.Header> {/* px-3 py-2 */}
-
+            </Card.Header>{" "}
+            {/* px-3 py-2 */}
             <Card.Body>
               <Row className="px-3 py-2">
                 <Col sm={5} md={5} className="fw-light">
@@ -247,26 +260,60 @@ function CallCard(props) {
                   </Row>
                   <Row className="fs-6">
                     <Col className="fw-lighter">
-                      <p>Asunto de la llamada</p>
-                      <p>Nombre del agente</p>
-                      <p>Nombre del cliente</p>
-                      <p>Número del cliente</p>
-                      <p>Hora de inicio</p>
-                      <p>Duración</p>
-                    </Col>
-                    <Col className="fw-normal">
-                      <p>{props.asunto}</p>
-                      <p>{props.nombreAgente}</p>
-                      <p>{props.nombreCliente}</p>
-                      <p>{props.celular}</p>
-                      <p>{props.fecha.substring(11, 19)}</p>
+                      <p>
+                        Asunto de la llamada:
+                        <a className="text-black text-decoration-none">
+                          {" "}
+                          {props.asunto}
+                        </a>
+                      </p>
 
-                      
-                      <p>{minutes.toString().padStart(2, '0')}:{displaySeconds.toString().padStart(2, '0')}</p>
+                      <p>
+                        Nombre del agente:
+                        <a className="text-black text-decoration-none">
+                          {" "}
+                          {props.nombreAgente}
+                        </a>
+                      </p>
+
+                      <p>
+                        Nombre del cliente:
+                        <a className="text-black text-decoration-none">
+                          {" "}
+                          {props.nombreCliente}
+                        </a>
+                      </p>
+
+                      <p>
+                        Número del cliente:
+                        <a className="text-black text-decoration-none">
+                          {" "}
+                          {props.celular}
+                        </a>
+                      </p>
+
+                      <p>
+                        Hora de inicio:
+                        <a className="text-black text-decoration-none">
+                          {" "}
+                          {props.fecha.substring(11, 19)}
+                        </a>
+                      </p>
+
+                      <p>
+                        Duración:
+                        <a className="text-black text-decoration-none">
+                          {" "}
+                          {minutes.toString().padStart(2, "0")}:
+                          {displaySeconds.toString().padStart(2, "0")}
+                        </a>
+                      </p>
                     </Col>
                   </Row>
                 </Col>
-                <Col sm={7} md={7} className="ps-4" >{renderContent()}</Col>
+                <Col sm={7} md={7} className="ps-4">
+                  {renderContent()}
+                </Col>
               </Row>
             </Card.Body>
           </Card>

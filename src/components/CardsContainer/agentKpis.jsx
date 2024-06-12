@@ -1,6 +1,4 @@
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import {Card, Col, Row} from "react-bootstrap";
 import "../../styles/callCard.css";
 import Sentiment from "./sentiment";
 
