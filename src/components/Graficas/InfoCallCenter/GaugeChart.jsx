@@ -4,7 +4,7 @@ import GlobalContext from '../../GlobalVariable/GlobalContext';
 
 const GaugeChartComponent = ({ value }) => {
   const [gaugeValue, setGaugeValue] = useState(value);
-  const {url, token} = useContext(GlobalContext);
+  const { url, token } = useContext(GlobalContext);
 
   function getGaugeValue(data) {
     const Negative = parseInt(data.Negative);
@@ -14,14 +14,19 @@ const GaugeChartComponent = ({ value }) => {
     const suma = (Negative * -1) + (Positive * 1) + (Neutral * 0);
     const cant = Negative + Positive + Neutral;
     const resultado = (suma / cant) + 1;
-    const final = (resultado * 100) / 2;
-    return final;
+    let final = (resultado * 100) / 2;
 
+    if (isNaN(final) || final === null) {
+      final = 50;
+    }
+
+    return final;
   }
-  
+
   useEffect(() => {
     fetch(`http://${url}/llamada/tipoEmocionPorDia`, {
-      headers: { Authorization: `Bearer ${token}`}})
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
         setGaugeValue(getGaugeValue(data[0]));
@@ -35,7 +40,7 @@ const GaugeChartComponent = ({ value }) => {
 
   return (
     <div>
-      <GaugeChart 
+      <GaugeChart
         id="gauge-chart"
         nrOfLevels={20}
         percent={gaugeValue / 100}

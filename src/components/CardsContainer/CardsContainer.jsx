@@ -98,7 +98,7 @@ const CardsContainer = () => {
                 precio="-"
                 numLlamadas={call.numLlamadas}
                 celular="-"
-                idEmpleado="-"
+                idEmpleado={call.IdEmpleado}
                 estado={call.Estado}
               />
             )}{" "}

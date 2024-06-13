@@ -159,7 +159,7 @@ function CallCard(props) {
       case "msg":
         return <MessageToAgent id={props.idEmpleado} />;
       case "kpis":
-        return <AgentKpis />;
+        return <AgentKpis numLlamadas = {props.numLlamadas} id = {props.idEmpleado}/>;
       default:
         return null;
     }
