@@ -10,12 +10,12 @@
 }
 
 .kpi-button {
-  background-color: #F0CBC9; /* Color de fondo */
-  color: #31330B; /* Color de texto */
-  margin: auto; /* Margen entre cada botón */
-  text-align: center; /* Alineación de texto */
-  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
-  transition-duration: 0.3s; /* Duración de la transición */
+  background-color: #F0CBC9; 
+  color: #31330B;
+  margin: auto; 
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.3s; 
   width: 12rem;
   height: 6rem;
   border-radius: 10px;
@@ -24,7 +24,7 @@
 }
 
 .kpi-button:hover {
-  background-color: #ffe7e6; /* Cambiar el color de fondo al pasar el mouse */
+  background-color: #ffe7e6; 
 }
 
 .modal-top-section .modal-dialog {
@@ -44,8 +44,8 @@
 
   
 .kpi-button {
-  text-align: center; /* Alineación de texto */
-  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+  text-align: center; 
+  cursor: pointer;
   width:210px;
   height:110px;
   margin-left: 10px;

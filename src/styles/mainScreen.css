@@ -83,10 +83,9 @@
 }
 
 .custom-carousel .carousel-indicators .active {
-  background-color: gray; /* O cualquier otro color para la indicación activa */
+  background-color: gray; 
 }
 
-/* Ajuste del header */
 .header-navbar {
   position: fixed;
   top: 0;
@@ -94,11 +93,10 @@
   z-index: 1000;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 56px; /* Asegúrate de que esta altura coincida con el padding-top de .main-container */
+  height: 56px; 
 }
 
 
-/* Para pantallas entre 300px y 1000px */
 @media screen and (min-width: 500px) and (max-width: 990px) {
   .right-panel {
     width: 55%;

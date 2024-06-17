@@ -95,8 +95,6 @@
   
 }
 
-/* Permite responsividad dentro de la pantalla principal*/
-/* Limita tamaños para mantener responsividad */
 @media (max-width: 1024px) {
   .danger,
   .fine,

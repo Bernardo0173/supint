@@ -22,8 +22,8 @@
 
 .sugpers-buttons {
     display: flex;
-    gap: 10px; /* Espacio entre botones */
-    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; 
+    justify-content: center; 
 }
 
 .sugpers-button {
@@ -34,8 +34,8 @@
     font-size: 1em;
     text-align: center;
     transition: background-color 0.3s ease;
-    flex: 0 1 auto; /* Permite que los botones se ajusten al contenido */
-    width: auto; /* Ajuste automático del ancho */
+    flex: 0 1 auto; 
+    width: auto; 
     margin-right: 0.3rem;
 }
 
@@ -65,12 +65,12 @@
 }
 
 .expand-enter-active {
-    max-height: 200px; /* Ajusta según sea necesario */
+    max-height: 200px; 
     opacity: 1;
 }
 
 .expand-exit {
-    max-height: 200px; /* Ajusta según sea necesario */
+    max-height: 200px;
     opacity: 1;
     overflow: hidden;
     transition: max-height 300ms ease-in, opacity 300ms ease-in;

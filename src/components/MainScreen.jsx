@@ -1,31 +1,42 @@
-import "../styles/emotionalStyles.css";
-import React, { useState } from "react";
-import "../styles/mainScreen.css"; // Asegúrate de tener este archivo CSS en la misma carpeta
+/**
+ * Author: José Antonio Moreno Tahuilan
+ *         Bernardo Limon Montes de Oca
+ *         Eric Manuel Navarro Martínez
+ * 
+ * Description: This component is the main screen of the application. It contains the header, the cards 
+ * zone, the right panel with the incidents and graphics tabs, and the content section that changes depending 
+ * on the active tab.
+ */
+
+import React, { useState } from 'react';
+import Header from './Header/Header';
+import ChartContainer from './StatisticsSection/ChartContainer';
+import IncidentPanel from './IncidentSection/IncidentPanel';
+import CardsContainer from './AgentSection/CardsContainer';
+import '../styles/mainScreen.css';
+import '../styles/emotionalStyles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import Header from "./Header/Header";
-import GrafCard from "./Graficas/GrafCard";
-import PanelInc from "./Panel_Incidencias/PanelInc";
-import CardsContainer from "./CardsContainer/CardsContainer";
 
 const MainScreen = () => {
-
-  const initialInc = [
-    { id: 0, tipoIncidencia: "Robo de cable", zona: "1", desc: "Se robaron el cable a las 14 horas" },
-    { id: 1, tipoIncidencia: "Vandalismo", zona: "2", desc: "Vandalizaron el cable y necesita reposición" },
-  ];
-
-  const [inc, setInc] = useState(initialInc);
-  const [activeTab, setActiveTab] = useState("graficas");
+  const [activeTab, setActiveTab] = useState('graphics');
 
   return (
     <div className="main-container mt-4">
+      {/* Show the header and the cards zone */}
       <Header />
       <CardsContainer />
       <div className="right-panel ps-5 pe-4">
         <div className="button-group">
-          <ToggleButtonGroup type="radio" name="options" defaultValue={2} onChange={(val) => setActiveTab(val === 1 ? "incidencias" : "graficas")} className="w-100">
+          {/* Show the tabs to switch between incidents and graphics */}
+          <ToggleButtonGroup
+            type="radio"
+            name="options"
+            defaultValue={2}
+            onChange={(val) => setActiveTab(val === 1 ? 'incidents' : 'graphics')}
+            className="w-100"
+          >
             <ToggleButton id="tbg-radio-1" value={1} className="tab-button" variant="light">
               Incidencias
             </ToggleButton>
@@ -35,11 +46,11 @@ const MainScreen = () => {
           </ToggleButtonGroup>
         </div>
         <div className="content-section">
-          {activeTab === "incidencias" ? (
-            <PanelInc />
+          {activeTab === 'incidents' ? (
+            <IncidentPanel />
           ) : (
             <div className="top-section">
-              <GrafCard/>
+              <ChartContainer />
             </div>
           )}
         </div>

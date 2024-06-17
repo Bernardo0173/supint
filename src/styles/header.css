@@ -1,4 +1,3 @@
-/* header.css */
 .header-navbar {
   position: fixed;
   top: 0;
@@ -20,5 +19,5 @@
 }
 
 .button-group img {
-  margin-right: 10px; /* Espacio entre la imagen y el botón */
+  margin-right: 10px; 
 }

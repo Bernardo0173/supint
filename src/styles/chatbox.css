@@ -70,7 +70,7 @@
 }
 
 .icon {
-  flex: 0 0 50px; /* Tamaño fijo para el icono */
+  flex: 0 0 50px; 
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -80,7 +80,7 @@
 }
 
 .icon-red {
-  flex: 0 0 50px; /* Tamaño fijo para el icono */
+  flex: 0 0 50px;
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -91,7 +91,7 @@
 }
 
 .icon-green {
-  flex: 0 0 50px; /* Tamaño fijo para el icono */
+  flex: 0 0 50px; 
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -102,7 +102,7 @@
 }
 
 .icon-blue {
-  flex: 0 0 50px; /* Tamaño fijo para el icono */
+  flex: 0 0 50px; 
   flex-direction: row;
   display: flex;
   justify-content: center;

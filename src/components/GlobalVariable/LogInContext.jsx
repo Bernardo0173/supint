@@ -1,5 +1,10 @@
-import { createContext, useContext, useState } from "react";
+/**
+ * Author: Joahan Javier Garcia
+ * 
+ * Description: This component is a context that stores the agent's data
+ */
 
+import { createContext, useContext, useState } from "react";
 
 const LogInContext = createContext();
 
@@ -14,7 +19,6 @@ export const LogInProvider = ({children}) => {
         Nombre: null,
         ApellidoP: null,
         ApellidoM: null,
-        //usuario?
     }
 
     const [agent, setAgent] = useState(defaultAgent);

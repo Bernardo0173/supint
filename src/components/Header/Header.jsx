@@ -1,40 +1,46 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Container, Navbar, Offcanvas, Button } from "react-bootstrap";
-import SugPers from "./SugPers";
-import EmocionesNeg from "./EmocionesNeg"; 
-import MensForm from "./MensForm"; // Actualizado el nombre del componente
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../styles/notificationsOffCanvas.css";
-import "../../styles/header.css"; // Asegúrate de tener este archivo CSS
-import izziLogo from "../../elements/izziN.png";
-import cartaIcon from "../../elements/card-text.svg"; // Asegúrate de tener esta imagen en la carpeta correcta
+/**
+ *  Author: José Antonio Moreno Tahuilan
+ *          Bernardo Limon Montes de Oca
+ *          Alfredo Azamar Lopez
+ * 
+ * Description: This component is the header of the application. It contains the notification 
+ * zone and the message to all the agents zone.
+ */
+
 import GlobalContext from "../GlobalVariable/GlobalContext";
-import TiempoPromedio from "./TiempoPromedio";
-import PeoresAgentes from "./PeoresAgentes";
+import AverageTimeSuggestion from "./AverageTimeSuggestion";
+import WorstAgentsSuggestion from "./WorstAgentsSuggestion";
+import PersonalizedSuggestion from "./PersonalizedSuggestion";
+import NegativeEmotionSuggestion from "./NegativeEmotionSuggestion"; 
+import MessageForm from "./MessageForm"; 
+import "../../styles/notificationsOffCanvas.css";
+import "../../styles/header.css";
+import { useState, useEffect, useContext } from "react";
+import { Container, Navbar, Offcanvas, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import izziLogo from "../../elements/izziN.png";
 import { IoMdNotifications } from "react-icons/io";
 import { RiMessage2Line } from "react-icons/ri";
 
-const initialNotifications = [
-  {
-    title: "Sugerencia de sistema",
-    content:
-      "Recomendamos tener más agentes en este periodo debido al desempeño analizado.",
-    actions: ["Acción 1", "Acción 2", "Acción 3"],
-  },
-  {
-    title: "Mantenimiento programado",
-    content: "El sistema estará en mantenimiento el próximo fin de semana.",
-    actions: ["Acción A", "Acción B"],
-  },
-  // Puedes añadir más notificaciones aquí
-];
-
 function Header() {
-  const [agentesInactivos, setAgectesInactivos] = useState(0);
-  const [emocionesNegativas, setEmocionesNegativas] = useState(0);
-  const [tiempoLlamada, setTiempoLlamada] = useState(0);
-  const { url, token, setToken, titulo, setTitulo, mensaje, setMensaje } = useContext(GlobalContext);
- 
+  const [inactiveAgents, setInactiveAgents] = useState(0);
+  const [negativeEmotions, setNegativeEmotions] = useState(0);
+  const [timeCall, setTimeCall] = useState(0);
+
+  /**
+   * This values are going to be compared with the actual value
+   * in future implementations we should me modify for the suppervisor
+   * to be able to change this values
+   */
+
+  const [idealInactiveAgent, ] = useState(0);
+  const [idealNegativeEmotions, ] = useState(0);
+  const [idealTimeCall, ] = useState(0);
+
+  const { url, token, setTitle, setMessage } = useContext(GlobalContext);
+
+  // Depending of the data that we get from the API we are going to show or not a type of notification
+  
   useEffect(() => {
     const fetchApiData = () => {
       console.log("Fetching data...");
@@ -52,45 +58,46 @@ function Header() {
 
           console.log(dataArray);
 
-          setTiempoLlamada(dataArray[0][0].averageDuration);
-          setEmocionesNegativas(dataArray[1][0].count);
-          setAgectesInactivos(dataArray[2][0].Inactivos);
+          setTimeCall(dataArray[0][0].averageDuration);
+          setNegativeEmotions(parseInt(dataArray[1][0].count));
+          setInactiveAgents(parseInt(dataArray[2][0].Inactivos));
 
           console.log(dataArray[0][0].averageDuration);
           console.log(dataArray[1][0].count);
-          console.log(dataArray[2][0].Inactivos);
+          console.log(parseInt(dataArray[2][0].Inactivos));
 
           console.log(dataArray);
         })
         .catch((error) => console.error("Error fetching data:", error));
     };
 
-    // Llama a fetchApiData inmediatamente y luego cada 5 segundos
     fetchApiData();
-    const intervalId = setInterval(fetchApiData, 5000); // 5000 ms = 5 segundos
+    const intervalId = setInterval(fetchApiData, 5000); 
 
-    // Limpiar el intervalo cuando el componente se desmonte
     return () => clearInterval(intervalId);
   }, []);
 
   const [show, setShow] = useState(false);
   const [showMessageCanvas, setShowMessageCanvas] = useState(false);
-  const [notifications, setNotifications] = useState(initialNotifications);
+  const [notifications, setNotifications] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleMessageClose = () => setShowMessageCanvas(false);
   const handleMessageShow = () => setShowMessageCanvas(true);
-  const handleEmocionesNegativas = () => {
+
+  // Depending of the notification that we want to show we are going to personalisable the message
+  
+  const handleNegativeEmotionSuggestion = () => {
     setShowMessageCanvas(true);
-    setTitulo("Emociones negativas");
-    setMensaje("Queridos agentes hemos notado que hay un incremento en las emociones negativas en las llamadas, por favor recordar la importancia de la empatía en el trato con los clientes. Muchas gracias");
+    setTitle("Emociones negativas");
+    setMessage("Queridos agentes hemos notado que hay un incremento en las emociones negativas en las llamadas, por favor recordar la importancia de la empatía en el trato con los clientes. Muchas gracias");
   };
 
-  const handleTiempoPromedio = () => {
+  const handleAverageTimeSuggestion = () => {
     setShowMessageCanvas(true);
-    setTitulo("Tiempo promedio de llamada");
-    setMensaje("Queridos agentes hemos notado que el tiempo promedio de llamada es mayor al esperado, por favor recordar la importancia de mantener un tiempo adecuado en las llamadas. Muchas gracias");
+    setTitle("Tiempo promedio de llamada");
+    setMessage("Queridos agentes hemos notado que el tiempo promedio de llamada es mayor al esperado, por favor recordar la importancia de mantener un tiempo adecuado en las llamadas. Muchas gracias");
      
   };
 
@@ -105,7 +112,6 @@ function Header() {
         <Container fluid>
           <Navbar.Brand href="#">
             <img
-            
               src={izziLogo}
               alt="Izzi"
               height="45"
@@ -138,39 +144,48 @@ function Header() {
                 Notificaciones
               </Offcanvas.Title>
             </Offcanvas.Header>
+
+            {/* Depending of the notification that we want to show we are going to personalisable 
+                the type of notification and the message */}
+
             <Offcanvas.Body>
-              {agentesInactivos > 1 ? (
-                <SugPers
+
+              {/* If are more than one inactive agent. */}
+
+              {inactiveAgents > idealInactiveAgent ? (
+                <PersonalizedSuggestion
                   key={1}
                   isOpen={true}
                   title={"Agentes inactivos"}
-                  content={`Actualmente hay ${agentesInactivos} agentes inactivos.`}
+                  content={`Actualmente hay ${inactiveAgents} agentes inactivos.`}
                   actions={[
                     "1. Cambiar agentes a otras areas",
                     "2. Disminuir cantidad de agentes (cambiar horario de agentes)",
                   ]}
-                  onDelete={() => handleDelete(1)}
                 />
               ) : null}
 
-              {emocionesNegativas > 1 ? (
-                <EmocionesNeg
+              {/* If are more than one call with a negative emotion. */}
+
+              {negativeEmotions > idealNegativeEmotions ? (
+                <NegativeEmotionSuggestion
                   key={2}
                   isOpen={true}
                   title={"Emociones negativas."}
-                  content={`Actualmente hay ${emocionesNegativas} conversaciones con emociones negativas.`}
+                  content={`Actualmente hay ${negativeEmotions} conversaciones con emociones negativas.`}
                   actions={[
                     "1. Verifique las llamadas",
                     "2. Realizar una capacitación",
                     "3. Realizar una encuesta",
                   ]}
-                  onDelete={() => handleDelete(1)}
-                  openPanel = {handleEmocionesNegativas}
+                  openPanel = {handleNegativeEmotionSuggestion}
                 />
               ) : null}
 
-              {tiempoLlamada > 1 ? (
-                <TiempoPromedio
+              {/* If the average time of the call is greater than 20 seconds. */}
+
+              {timeCall > idealTimeCall ? (
+                <AverageTimeSuggestion
                   key={3}
                   isOpen={true}
                   title={"Tiempo de llamada."}
@@ -181,11 +196,13 @@ function Header() {
                     "1. Verificar la cantidad de agentes",
                     "2. Checar llamadas actuales con duracion mayor a tiempo ideal."
                   ]}
-                  onDelete={() => handleDelete(3)}
-                  openPanel = {handleTiempoPromedio}
+                  openPanel = {handleAverageTimeSuggestion}
                 />
               ) : null}
-              <PeoresAgentes
+
+              {/* If the agent has a bad performance. */}
+
+              <WorstAgentsSuggestion
                   key={2}
                   isOpen={true}
                   title={"Capacitación agentes"}
@@ -196,7 +213,7 @@ function Header() {
                     "3. Realizar una encuesta",
                   ]}
                   onDelete={() => handleDelete(1)}
-                  openPanel = {handleEmocionesNegativas}
+                  openPanel = {handleNegativeEmotionSuggestion}
                 />
             </Offcanvas.Body>
           </Navbar.Offcanvas>
@@ -214,7 +231,7 @@ function Header() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <MensForm />
+              <MessageForm />
             </Offcanvas.Body>
           </Offcanvas>
         </Container>
