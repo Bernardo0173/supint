@@ -29,7 +29,7 @@ import {
 import { IoWarningOutline } from "react-icons/io5";
 import { RiZzzFill } from "react-icons/ri";
 import { useState, useEffect, useContext } from "react";
-import Chat from "./Chatbox";
+import Chatbox from "./Chatbox";
 import GlobalContext from "../GlobalVariable/GlobalContext";
 import io from "socket.io-client";
 import { toast } from "react-hot-toast";
@@ -166,7 +166,7 @@ function CallCard({initialCallStatus, type, state, clientName, agentName, phone,
     switch (activeTab) {
       case "liveCall":
         return (
-          <Chat
+          <Chatbox
             nombreCliente={clientName}
             agentName={agentName}
             id={id}

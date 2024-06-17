@@ -9,7 +9,7 @@ import Message from "./Message";
 import { useState, useEffect, useContext } from "react";
 import GlobalContext from "../GlobalVariable/GlobalContext";
 
-const Chatbox = ({id, nombreAgente, nombreCliente}) => {
+const Chatbox = ({id, agentName, nombreCliente}) => {
 
   const [messages, setMessages] = useState([]);
   const { url, token} = useContext(GlobalContext);
@@ -34,7 +34,7 @@ const Chatbox = ({id, nombreAgente, nombreCliente}) => {
   return (
     <div className="chatbox-container">
       <div className="chatbox-header">
-        <p>Agente: {nombreAgente}</p>
+        <p>Agente: {agentName}</p>
         <p>Cliente: {nombreCliente}</p>
       </div>
 

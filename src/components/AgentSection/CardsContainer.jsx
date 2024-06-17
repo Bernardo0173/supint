@@ -23,7 +23,7 @@ const CardsContainer = () => {
 
   // Fetch the data from the recent calls
   useEffect(() => {
-    fetch(`http://${url}/llamada/infoTarjetasV2`, {
+    fetch(`http://${url}/llamada/infoTarjetas`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => response.json())
