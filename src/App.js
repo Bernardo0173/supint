@@ -25,11 +25,11 @@ import { useLogInContext } from "./components/GlobalVariable/LogInContext";
 
 function App() {
 
-  //const [url,] = useState("44.209.22.101:8080");
+  const [url,] = useState("44.209.22.101:8080");
   const [token, setToken] = useState("");
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
-  const [url, ] = useState("127.0.0.1:8080");
+  //const [url, ] = useState("127.0.0.1:8080");
   const [agent,] = useLogInContext();
 
   return (
