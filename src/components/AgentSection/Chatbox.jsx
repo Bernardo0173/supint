@@ -9,7 +9,7 @@ import Message from "./Message";
 import { useState, useEffect, useContext } from "react";
 import GlobalContext from "../GlobalVariable/GlobalContext";
 
-const Chatbox = ({id, agentName, nombreCliente}) => {
+const Chatbox = ({id, agentName, clientName}) => {
 
   const [messages, setMessages] = useState([]);
   const { url, token} = useContext(GlobalContext);
@@ -35,7 +35,7 @@ const Chatbox = ({id, agentName, nombreCliente}) => {
     <div className="chatbox-container">
       <div className="chatbox-header">
         <p>Agente: {agentName}</p>
-        <p>Cliente: {nombreCliente}</p>
+        <p>Cliente: {clientName}</p>
       </div>
 
       {/* Transform all the JSON in a group of messages. */}

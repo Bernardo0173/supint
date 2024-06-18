@@ -34,7 +34,7 @@ import GlobalContext from "../GlobalVariable/GlobalContext";
 import io from "socket.io-client";
 import { toast } from "react-hot-toast";
 
-const socket = io("http://44.209.22.101:8080");
+const socket = io('backloadbalancer-1550033804.us-east-1.elb.amazonaws.com');
 
 function CallCard({initialCallStatus, type, state, clientName, agentName, phone, notes, date, numCalls, id, employeeId}) {
   // Show modal containing call details
@@ -167,7 +167,7 @@ function CallCard({initialCallStatus, type, state, clientName, agentName, phone,
       case "liveCall":
         return (
           <Chatbox
-            nombreCliente={clientName}
+            clientName={clientName}
             agentName={agentName}
             id={id}
           />

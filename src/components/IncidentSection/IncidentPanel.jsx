@@ -13,7 +13,7 @@ import GlobalContext from '../GlobalVariable/GlobalContext';
 import Incident from './Incident';
 import '../../styles/mainScreen.css';
 
-const socket = io('http://44.209.22.101');
+const socket = io('backloadbalancer-1550033804.us-east-1.elb.amazonaws.com');
 // const socket = io('http://127.0.0.1:8080');
 
 const IncidentPanel = ({ increment }) => {

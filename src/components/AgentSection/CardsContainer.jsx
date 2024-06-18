@@ -15,7 +15,7 @@ import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalContext from "../GlobalVariable/GlobalContext";
 
-const socket = io("http://44.209.22.101:8080");
+const socket = io('backloadbalancer-1550033804.us-east-1.elb.amazonaws.com');
 
 const CardsContainer = () => {
   const { url, token } =  useContext(GlobalContext);
